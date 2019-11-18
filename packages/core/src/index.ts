@@ -1,1 +1,1 @@
-export { default as Box } from './components/Box';
+export { Box, IBoxProps } from './components/Box';
