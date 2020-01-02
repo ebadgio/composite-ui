@@ -4,6 +4,6 @@ import styled from '@emotion/styled';
 
 export interface IFlexProps extends IBoxProps, FlexProps {}
 
-export const Flex = styled(Box)`
+export const Flex = styled(Box)<IFlexProps>`
   ${flex}
 `;
