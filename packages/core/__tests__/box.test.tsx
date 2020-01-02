@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Box } from '../src/components/Box';
 
 describe('Box', () => {
-  it('should render properly with right props and text', () => {
+  it('should render properly with right props and children', () => {
     const wrapper = mount(
       <Box width="200px" height="40px">
         Hello

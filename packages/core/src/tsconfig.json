@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "outDir": "./lib",
+    "outDir": "../lib",
     "declaration": true,
     "jsx": "react",
     "target": "es5",
