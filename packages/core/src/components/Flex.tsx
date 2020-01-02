@@ -1,9 +1,9 @@
 import { Box, IBoxProps } from './Box';
-import { flex, FlexProps } from 'styled-system';
+import { flexbox, FlexboxProps } from 'styled-system';
 import styled from '@emotion/styled';
 
-export interface IFlexProps extends IBoxProps, FlexProps {}
+export interface IFlexProps extends IBoxProps, FlexboxProps {}
 
 export const Flex = styled(Box)<IFlexProps>`
-  ${flex}
+  ${flexbox}
 `;
