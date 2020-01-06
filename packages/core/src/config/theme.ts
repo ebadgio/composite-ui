@@ -4,7 +4,10 @@ export const BaseTheme: object = {
   buttons: {
     primary: {
       backgroundColor: '#424242',
-      color: '#fff'
+      color: '#fff',
+      '&:hover': {
+        backgroundColor: '#606060'
+      }
     }
   }
 };

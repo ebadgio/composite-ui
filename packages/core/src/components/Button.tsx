@@ -15,7 +15,6 @@ import {
   ButtonStyleProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-// import { BaseTheme } from '../config/theme';
 import * as React from 'react';
 
 export interface IButtonProps
@@ -35,6 +34,8 @@ export const Button = styled.button<IButtonProps>`
   ${fontSize}
   ${fontWeight}
   ${buttonStyle}
+  cursor: pointer;
+  transition: background .25s ease, background-color .25s ease;
   &:focus {
     outline: none;
   }
