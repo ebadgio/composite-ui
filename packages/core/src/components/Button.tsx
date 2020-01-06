@@ -35,6 +35,7 @@ export const Button = styled.button<IButtonProps>`
   ${fontWeight}
   ${buttonStyle}
   cursor: pointer;
+  box-sizing: border-box;
   transition: background .25s ease, background-color .25s ease;
   &:focus {
     outline: none;
@@ -45,7 +46,7 @@ Button.defaultProps = {
   border: 0,
   borderRadius: '4px',
   fontWeight: 'bold',
-  height: '40px',
-  width: '100px',
+  height: '35px',
+  padding: '0 16px',
   variant: 'primary'
 };
