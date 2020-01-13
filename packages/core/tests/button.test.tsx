@@ -2,12 +2,12 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { Button } from '../src/components/Button';
 import { ThemeProvider } from '../src/components/ThemeProvider';
-import { BaseTheme } from '../src/config/theme';
+import { baseTheme } from '../src/config/theme';
 
 describe('Button', () => {
   it('should render properly with correct props and children', () => {
     const wrapper = mount(
-      <ThemeProvider theme={BaseTheme}>
+      <ThemeProvider theme={baseTheme}>
         <Button>Hello</Button>
       </ThemeProvider>
     );
@@ -34,7 +34,7 @@ describe('Button', () => {
   it('should execute onClick function when click event is triggered', () => {
     const clickFunc = jest.fn(() => {});
     const wrapper = mount(
-      <ThemeProvider theme={BaseTheme}>
+      <ThemeProvider theme={baseTheme}>
         <Button onClick={clickFunc}>Hello</Button>
       </ThemeProvider>
     );

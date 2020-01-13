@@ -1,36 +1,43 @@
-const colorDefaults = {
-  black: ['#212121', '#424242', '#606060'],
-  gray: ['#C3C5C7', '#D9DBDC', '#EEF0F2', '#F4F5F6', '#FAFAFB']
+const colors = {
+  white: '#fff',
+  black: '#212121',
+  black60: '#424242',
+  black40: '#606060',
+  gray: '#C3C5C7',
+  gray80: '#D9DBDC',
+  gray60: '#EEF0F2',
+  gray40: '#F4F5F6',
+  gray20: '#FAFAFB'
 };
 
 const spaceDefaults = [0, 4, 8, 16, 32, 64, 128, 256, 512];
 const fontSizeDefaults = [12, 14, 16, 20, 24, 32, 48, 64, 72];
 
-export const BaseTheme = {
+export const baseTheme = {
   space: spaceDefaults,
   fontSizes: fontSizeDefaults,
-  colors: colorDefaults,
+  colors: colors,
   buttons: {
     primary: {
-      backgroundColor: colorDefaults.black[1],
-      color: '#fff',
+      backgroundColor: colors.black60,
+      color: colors.white,
       '&:hover': {
-        backgroundColor: colorDefaults.black[2]
+        backgroundColor: colors.black40
       }
     }
   },
   inputs: {
     outline: {
       border: '1px solid',
-      backgroundColor: colorDefaults.gray[3],
-      borderColor: colorDefaults.gray[1],
-      color: colorDefaults.black[0],
+      backgroundColor: colors.gray20,
+      borderColor: colors.gray80,
+      color: colors.black,
       transition: 'border-color .25s ease',
       '&:hover': {
-        borderColor: colorDefaults.gray[0]
+        borderColor: colors.gray
       },
       '&:focus': {
-        borderColor: colorDefaults.gray[0]
+        borderColor: colors.gray
       }
     }
   }
