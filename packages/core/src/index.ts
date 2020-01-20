@@ -4,5 +4,6 @@ export { Flex, IFlexProps } from './components/Flex';
 export { Button, IButtonProps } from './components/Button';
 export { Input, IInputProps } from './components/Input';
 export { TextArea, ITextAreaProps } from './components/TextArea';
+export { Navbar, INavbarProps } from './components/Navbar';
 export { ThemeProvider } from './components/ThemeProvider';
 export { baseTheme } from './config/theme';

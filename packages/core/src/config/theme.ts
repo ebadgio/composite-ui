@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   white: '#fff',
   black: '#212121',
   black60: '#424242',
@@ -12,10 +12,16 @@ const colors = {
 
 const spaceDefaults = [0, 4, 8, 16, 32, 64, 128, 256, 512];
 const fontSizeDefaults = [12, 14, 16, 20, 24, 32, 48, 64, 72];
+const shadowDefaults = [
+  'none',
+  '0px 1px 5px rgba(0,0,0,0.12)',
+  '0px 3px 10px rgba(0, 0, 0, 0.06)'
+];
 
 export const baseTheme = {
   space: spaceDefaults,
   fontSizes: fontSizeDefaults,
+  shadows: shadowDefaults,
   colors: colors,
   buttons: {
     primary: {
