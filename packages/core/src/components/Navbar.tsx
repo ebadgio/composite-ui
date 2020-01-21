@@ -11,6 +11,7 @@ import {
   BorderBottomProps
 } from 'styled-system';
 import styled from '@emotion/styled';
+import { Tabs } from './Tabs';
 import { Flex } from './Flex';
 import { Text } from './Text';
 import { Box } from './Box';
@@ -71,7 +72,16 @@ export const Navbar = (props: INavbarProps) => {
             {props.title}
           </Text>
         </Box>
-        <div>Tabs</div>
+        <Tabs
+          tabs={[
+            {
+              text: 'Home'
+            },
+            {
+              text: 'About'
+            }
+          ]}
+        />
       </Flex>
     </Wrapper>
   );

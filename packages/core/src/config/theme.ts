@@ -3,7 +3,7 @@ export const colors = {
   black: '#212121',
   black60: '#424242',
   black40: '#606060',
-  gray: '#C3C5C7',
+  gray: '#757575',
   gray80: '#D9DBDC',
   gray60: '#EEF0F2',
   gray40: '#F4F5F6',
@@ -44,6 +44,16 @@ export const baseTheme = {
       },
       '&:focus': {
         borderColor: colors.gray
+      }
+    }
+  },
+  tabs: {
+    basic: {
+      padding: '10px',
+      color: colors.gray,
+      transition: 'color .25s ease',
+      '&:hover': {
+        color: colors.black60
       }
     }
   }
