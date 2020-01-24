@@ -54,6 +54,9 @@ export const baseTheme = {
       transition: 'color .25s ease',
       '&:hover': {
         color: colors.black60
+      },
+      activeStyles: {
+        color: colors.black60
       }
     }
   }

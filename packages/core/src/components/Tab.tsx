@@ -1,12 +1,16 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { tabStyles } from '../config/variants';
+import { tabStyles, activeTabStyleFn } from '../config/variants';
 import { StyledComponent } from '@emotion/styled-base';
 
-export interface ITabBaseProps extends VariantStyleProps {}
+export interface ITabBaseProps extends VariantStyleProps {
+  onClick?: (e: React.SyntheticEvent) => void;
+  active?: boolean;
+}
 
 export const TabBase = styled.div`
   ${tabStyles}
+  ${activeTabStyleFn}
   cursor: pointer;
 `;
 
@@ -26,13 +30,14 @@ export interface ITab
 
 export interface ITabProps extends ITabBaseProps {
   text?: string;
-  active?: boolean;
   children?: React.ReactNode;
 }
 
 export const Tab = (props: ITabProps) => {
   const baseProps: ITabBaseProps = {
-    variant: props.variant
+    variant: props.variant,
+    onClick: props.onClick,
+    active: props.active
   };
 
   const renderTab = props.children || props.text;

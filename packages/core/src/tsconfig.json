@@ -7,7 +7,6 @@
     "jsx": "react",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "es5", "es2015.iterable"],
-    "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
