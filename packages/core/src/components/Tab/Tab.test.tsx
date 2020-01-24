@@ -29,7 +29,7 @@ describe('Tab', () => {
   });
 
   it('should call click handler', () => {
-    const handleTabClick = jest.fn((e: React.SyntheticEvent) => {});
+    const handleTabClick = jest.fn((_e: React.SyntheticEvent) => {});
 
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>

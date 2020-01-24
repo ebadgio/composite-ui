@@ -1,1 +1,1 @@
-export { Tab, ITabProps, ITab } from './Tab';
+export { Tab, ITabProps } from './Tab';

@@ -15,6 +15,7 @@ import { Tabs } from '../Tabs';
 import { Flex } from '../Flex';
 import { Text } from '../Text';
 import { Box } from '../Box';
+import { ITabProps } from '../Tab';
 
 const Wrapper = styled('div')`
   ${color}
@@ -43,6 +44,7 @@ interface IWrapperProps
 export interface INavbarProps extends IWrapperProps {
   title: string | React.ReactNode;
   theme: object;
+  tabs?: Array<ITabProps>;
 }
 
 export const Navbar = (props: INavbarProps) => {
@@ -72,16 +74,7 @@ export const Navbar = (props: INavbarProps) => {
             {props.title}
           </Text>
         </Box>
-        <Tabs
-          tabs={[
-            {
-              text: 'Home'
-            },
-            {
-              text: 'About'
-            }
-          ]}
-        />
+        {props.tabs && <Tabs tabs={props.tabs} />}
       </Flex>
     </Wrapper>
   );

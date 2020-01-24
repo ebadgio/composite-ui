@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Tab, ITab, ITabProps } from '../Tab';
+import { Tab, ITabProps } from '../Tab';
 import { Flex } from '../Flex';
 
 export interface ITabsProps {
   tabs?: Array<ITabProps>;
-  children?: Array<ITab>;
+  children?: React.ReactNode;
   vertical?: boolean;
   activeTab?: number;
   onTabChange?: (event: React.SyntheticEvent, id: number) => void;

@@ -33,7 +33,9 @@ describe('Tabs', () => {
   });
 
   it('should handle tab changes on click', () => {
-    const handleTabChange = jest.fn((e: React.SyntheticEvent, i: number) => {});
+    const handleTabChange = jest.fn(
+      (_e: React.SyntheticEvent, _id: number) => {}
+    );
 
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
@@ -41,7 +43,7 @@ describe('Tabs', () => {
       </ThemeProvider>
     );
 
-    wrapper.find(Tab).forEach((tab, idx) => {
+    wrapper.find(Tab).forEach((tab, _idx) => {
       tab.simulate('click');
     });
 
