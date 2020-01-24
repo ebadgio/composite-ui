@@ -32,6 +32,20 @@ describe('Tabs', () => {
     });
   });
 
+  it('should render with Tab as children', () => {
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Tabs>
+          <Tab>{tabs[0].text}</Tab>
+          <Tab>{tabs[1].text}</Tab>
+        </Tabs>
+      </ThemeProvider>
+    );
+    wrapper.find(Tab).forEach((tab, i) => {
+      expect(tab.find('div').text()).toEqual(tabs[i].text);
+    });
+  });
+
   it('should handle tab changes on click', () => {
     const handleTabChange = jest.fn(
       (_e: React.SyntheticEvent, _id: number) => {}
