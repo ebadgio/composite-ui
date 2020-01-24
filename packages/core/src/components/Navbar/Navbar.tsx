@@ -11,10 +11,10 @@ import {
   BorderBottomProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import { Tabs } from './Tabs';
-import { Flex } from './Flex';
-import { Text } from './Text';
-import { Box } from './Box';
+import { Tabs } from '../Tabs';
+import { Flex } from '../Flex';
+import { Text } from '../Text';
+import { Box } from '../Box';
 
 const Wrapper = styled('div')`
   ${color}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Text } from '../src/components/Text';
+import { Text } from './Text';
 
 describe('Text', () => {
   let color: string;

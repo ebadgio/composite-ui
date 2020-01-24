@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Button } from '../src/components/Button';
-import { ThemeProvider } from '../src/components/ThemeProvider';
-import { baseTheme } from '../src/config/theme';
+import { Button } from './Button';
+import { ThemeProvider } from '../ThemeProvider';
+import { baseTheme } from '../../config/theme';
 
 describe('Button', () => {
   it('should render properly with correct props and children', () => {

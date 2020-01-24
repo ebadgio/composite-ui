@@ -12,10 +12,10 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
-import { inputStyles } from '../config/variants';
+import { inputStyles } from '../../config/variants';
 
-export interface ITextAreaProps
-  extends Merge<ColorProps, React.HTMLAttributes<HTMLTextAreaElement>>,
+export interface IInputProps
+  extends Merge<ColorProps, React.HTMLAttributes<HTMLInputElement>>,
     BorderProps,
     SpaceProps,
     FontSizeProps,
@@ -24,7 +24,7 @@ export interface ITextAreaProps
   width: number | string; // needed in order to avoid typescript/react error for html input elem types
 }
 
-export const TextArea = styled.textarea<ITextAreaProps>`
+export const Input = styled.input<IInputProps>`
   ${width}
   ${height}
   ${fontSize}
@@ -38,9 +38,9 @@ export const TextArea = styled.textarea<ITextAreaProps>`
   }
 `;
 
-TextArea.defaultProps = {
+Input.defaultProps = {
   width: '100%',
-  height: '100px',
+  height: '35px',
   padding: '8px',
   borderRadius: '4px',
   fontSize: 1,

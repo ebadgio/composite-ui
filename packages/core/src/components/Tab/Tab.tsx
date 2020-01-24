@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import { tabStyles, activeTabStyleFn } from '../config/variants';
+import { tabStyles, activeTabStyleFn } from '../../config/variants';
 import { StyledComponent } from '@emotion/styled-base';
 
 export interface ITabBaseProps extends VariantStyleProps {

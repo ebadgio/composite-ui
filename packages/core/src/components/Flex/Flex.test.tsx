@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Flex } from '../src/components/Flex';
+import { Flex } from './Flex';
 
 describe('Flex', () => {
   let text1: string;

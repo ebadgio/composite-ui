@@ -1,4 +1,4 @@
-import { Box, IBoxProps } from './Box';
+import { Box, IBoxProps } from '../Box/Box';
 import { flexbox, FlexboxProps } from 'styled-system';
 import styled from '@emotion/styled';
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Box } from '../src/components/Box';
+import { Box } from './Box';
 
 describe('Box', () => {
   it('should render properly with right props and children', () => {

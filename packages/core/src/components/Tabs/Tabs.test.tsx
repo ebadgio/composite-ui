@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import { Tabs } from '../src/components/Tabs';
-import { ThemeProvider } from '../src/components/ThemeProvider';
-import { baseTheme } from '../src/config/theme';
-import { Tab, ITabProps } from '../src/components/Tab';
+import { Tabs } from './Tabs';
+import { ThemeProvider } from '../ThemeProvider';
+import { baseTheme } from '../../config/theme';
+import { Tab, ITabProps } from '../Tab';
 
 describe('Button', () => {
   let tabs: ITabProps[];

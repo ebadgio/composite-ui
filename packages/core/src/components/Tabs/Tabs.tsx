@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Tab, ITab, ITabProps } from './Tab';
-import { Flex } from './Flex';
+import { Tab, ITab, ITabProps } from '../Tab';
+import { Flex } from '../Flex';
 
 export interface ITabsProps {
   tabs?: Array<ITabProps>;

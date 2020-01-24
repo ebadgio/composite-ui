@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { Input } from '../src/components/Input';
+import { TextArea } from './TextArea';
 
-describe('Input', () => {
+describe('TextArea', () => {
   let textInput: string;
 
   beforeAll(() => {
@@ -10,12 +10,12 @@ describe('Input', () => {
   });
 
   it('should render properly with right props and children', () => {
-    const wrapper = mount(<Input height="35px" width="200px" />);
-    expect(wrapper.prop('width')).toEqual('200px');
-    expect(wrapper.prop('height')).toEqual('35px');
+    const wrapper = mount(<TextArea height="100px" width="100%" />);
+    expect(wrapper.prop('width')).toEqual('100%');
+    expect(wrapper.prop('height')).toEqual('100px');
     expect(
       wrapper
-        .find('input')
+        .find('textarea')
         .first()
         .hasClass(/(css-).+/)
     ).toEqual(true);
@@ -27,10 +27,10 @@ describe('Input', () => {
       value = e.target.value;
     });
     const wrapper = mount(
-      <Input height="35px" width="200px" onChange={changeFunc} />
+      <TextArea height="100px" width="100%" onChange={changeFunc} />
     );
     wrapper
-      .find(Input)
+      .find(TextArea)
       .first()
       .simulate('change', { target: { value: textInput } });
     expect(changeFunc).toHaveBeenCalledTimes(1);
