@@ -5,7 +5,7 @@ import { ThemeProvider } from '../ThemeProvider';
 import { baseTheme } from '../../config/theme';
 import { Tab, ITabProps } from '../Tab';
 
-describe('Button', () => {
+describe('Tabs', () => {
   let tabs: ITabProps[];
   let wrapper: ReactWrapper;
 

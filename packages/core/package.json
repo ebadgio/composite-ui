@@ -62,7 +62,7 @@
       "/lib/",
       "/es/"
     ],
-    "testRegex": "/tests/.*\\.(ts|tsx|js)$",
+    "testRegex": "\\.(test)\\.(ts|tsx|js)$",
     "transform": {
       "^.+\\.(ts|tsx)$": "babel-jest"
     }
