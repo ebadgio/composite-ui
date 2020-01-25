@@ -43,7 +43,7 @@ interface IWrapperProps
 
 export interface INavbarProps extends IWrapperProps {
   title: string | React.ReactNode;
-  theme: object;
+  theme?: object;
   tabs?: Array<ITabProps>;
 }
 
