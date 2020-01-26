@@ -38,8 +38,8 @@ export const HeadingBase = styled('div', { shouldForwardProp })`
 `;
 
 HeadingBase.defaultProps = {
-  as: 'h2',
-  fontSize: px(fontSizeDefaults[4])
+  as: 'h1',
+  fontSize: px(fontSizeDefaults[5])
 };
 
 export const Heading = (props: IHeadingProps) => {

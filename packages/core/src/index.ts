@@ -7,5 +7,6 @@ export { TextArea, ITextAreaProps } from './components/TextArea';
 export { Navbar, INavbarProps } from './components/Navbar';
 export { Tabs, ITabsProps } from './components/Tabs';
 export { Tab, ITabProps } from './components/Tab';
+export { Heading, IHeadingProps } from './components/Heading';
 export { ThemeProvider } from './components/ThemeProvider';
 export { baseTheme } from './config/theme';
