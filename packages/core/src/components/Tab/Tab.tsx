@@ -11,6 +11,7 @@ const TabBase = styled.div`
   ${tabStyles}
   ${activeTabStyleFn}
   cursor: pointer;
+  position: relative;
 `;
 
 TabBase.defaultProps = {

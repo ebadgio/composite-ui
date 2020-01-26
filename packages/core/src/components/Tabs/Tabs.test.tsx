@@ -63,4 +63,15 @@ describe('Tabs', () => {
 
     expect(handleTabChange).toHaveBeenCalledTimes(2);
   });
+
+  it('should handle variant props', () => {
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Tabs tabs={tabs} variant="outline" />
+      </ThemeProvider>
+    );
+    wrapper.find(Tab).forEach(tab => {
+      expect(tab.prop('variant')).toEqual('outline');
+    });
+  });
 });
