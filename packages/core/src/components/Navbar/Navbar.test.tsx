@@ -32,10 +32,25 @@ describe('Navbar', () => {
 
     expect(
       wrapper
-        .find('p')
+        .find('h2')
         .first()
         .text()
     ).toEqual('Test');
+
+    expect(wrapper.find(Tabs).find(Tab).length).toEqual(tabs.length);
+  });
+
+  it('should render children directly', () => {
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Navbar title={title}>
+          <Tabs>
+            <Tab text={tabs[0].text} />
+            <Tab text={tabs[1].text} />
+          </Tabs>
+        </Navbar>
+      </ThemeProvider>
+    );
 
     expect(wrapper.find(Tabs).find(Tab).length).toEqual(tabs.length);
   });

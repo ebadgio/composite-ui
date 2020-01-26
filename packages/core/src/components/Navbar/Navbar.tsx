@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  get,
   borderBottom,
   color,
   height,
@@ -13,9 +12,9 @@ import {
 import styled from '@emotion/styled';
 import { Tabs } from '../Tabs';
 import { Flex } from '../Flex';
-import { Text } from '../Text';
 import { Box } from '../Box';
 import { ITabProps } from '../Tab';
+import { Heading } from '../Heading';
 
 const Wrapper = styled('div')`
   ${color}
@@ -42,9 +41,10 @@ interface IWrapperProps
     HeightProps {}
 
 export interface INavbarProps extends IWrapperProps {
-  title: string | React.ReactNode;
+  title?: string | React.ReactNode;
   theme?: object;
   tabs?: Array<ITabProps>;
+  children?: React.ReactNode;
 }
 
 export const Navbar = (props: INavbarProps) => {
@@ -56,6 +56,13 @@ export const Navbar = (props: INavbarProps) => {
     height: props.height,
     borderBottom: props.borderBottom
   };
+
+  const renderTitle = (): React.ReactNode => {
+    if (typeof props.title === 'string') {
+      return <Heading level={2}>{props.title}</Heading>;
+    }
+    return props.title;
+  };
   return (
     <Wrapper {...wrapperProps}>
       <Flex
@@ -66,14 +73,8 @@ export const Navbar = (props: INavbarProps) => {
         alignItems="center"
         width="100%"
       >
-        <Box>
-          <Text
-            fontSize={get(props.theme, 'fontSizes.5', '24px')}
-            fontWeight="bold"
-          >
-            {props.title}
-          </Text>
-        </Box>
+        {props.title && <Box>{renderTitle()}</Box>}
+        {props.children}
         {props.tabs && <Tabs tabs={props.tabs} />}
       </Flex>
     </Wrapper>
