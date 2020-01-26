@@ -9,3 +9,5 @@ export const variantExtension = ({ variantKey, extensionKey, prop }) => {
   };
   return fn;
 };
+
+export const px = (num: string | number) => num + 'px';
