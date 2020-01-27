@@ -18,18 +18,6 @@ export const shadowDefaults = [
   '0px 3px 10px rgba(0, 0, 0, 0.06)'
 ];
 
-`
-bottom: 0;
-right: 0;
-left: 0;
-position: absolute;
-margin-top: 10px;
-content: "";
-height: 2px;
-width: 100%;
-background-color: black;
-`;
-
 export const baseTheme = {
   space: spaceDefaults,
   fontSizes: fontSizeDefaults,
@@ -61,9 +49,6 @@ export const baseTheme = {
   },
   tabs: {
     basic: {
-      padding: `${spaceDefaults[2]}px ${spaceDefaults[3]}px`,
-      color: colors.gray,
-      transition: 'color .25s ease',
       '&:hover': {
         color: colors.black60
       },
@@ -72,9 +57,6 @@ export const baseTheme = {
       }
     },
     outline: {
-      padding: `12px 16px`,
-      color: colors.gray,
-      transition: 'color .25s ease',
       '&:hover': {
         color: colors.black
       },
@@ -90,6 +72,16 @@ export const baseTheme = {
           width: '100%',
           backgroundColor: colors.black
         }
+      }
+    },
+    solid: {
+      borderRadius: '4px',
+      '&:hover': {
+        color: colors.black
+      },
+      activeStyles: {
+        color: colors.black,
+        backgroundColor: colors.gray40
       }
     }
   }

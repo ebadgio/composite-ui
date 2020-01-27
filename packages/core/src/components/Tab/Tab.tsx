@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { tabStyles, activeTabStyleFn } from '../../config/variants';
+import { colors } from '../../config/theme';
 
 interface ITabBaseProps extends VariantStyleProps {
   onClick?: (e: React.SyntheticEvent) => void;
@@ -8,10 +9,14 @@ interface ITabBaseProps extends VariantStyleProps {
 }
 
 const TabBase = styled.div`
-  ${tabStyles}
-  ${activeTabStyleFn}
+  box-sizing: border-box;
+  padding: 12px 16px;
   cursor: pointer;
   position: relative;
+  color: ${colors.gray};
+  transition: all 0.25s ease;
+  ${tabStyles}
+  ${activeTabStyleFn}
 `;
 
 TabBase.defaultProps = {

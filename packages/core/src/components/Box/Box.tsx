@@ -21,6 +21,7 @@ export interface IBoxProps
     BoxShadowProps {}
 
 export const Box = styled.div<IBoxProps>`
+  box-sizing: border-box;
   ${space}
   ${layout}
   ${color}
