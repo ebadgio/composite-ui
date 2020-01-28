@@ -75,6 +75,7 @@ export const baseTheme = {
       }
     },
     solid: {
+      padding: `8px 16px`,
       borderRadius: '4px',
       '&:hover': {
         color: colors.black
