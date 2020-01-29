@@ -4,10 +4,12 @@ import {
   color,
   height,
   boxShadow,
+  zIndex,
   HeightProps,
   BoxShadowProps,
   ColorProps,
-  BorderBottomProps
+  BorderBottomProps,
+  ZIndexProps
 } from 'styled-system';
 import styled from '@emotion/styled';
 import { Tabs } from '../Tabs';
@@ -17,28 +19,30 @@ import { ITabProps } from '../Tab';
 import { Heading } from '../Heading';
 
 const Wrapper = styled('div')`
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
   ${color}
   ${boxShadow}
   ${borderBottom}
   ${height}
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  display: flex;
-  justify-content: center;
+  ${zIndex}
 `;
 
 Wrapper.defaultProps = {
   bg: '#fff',
-  height: '50px'
+  height: '50px',
+  zIndex: 2
 };
 
 interface IWrapperProps
   extends ColorProps,
     BorderBottomProps,
     BoxShadowProps,
-    HeightProps {}
+    HeightProps,
+    ZIndexProps {}
 
 export interface INavbarProps extends IWrapperProps {
   title?: string | React.ReactNode;
