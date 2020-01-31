@@ -15,7 +15,7 @@ describe('Navbar', () => {
     heading2 = 'This is the offset content';
   });
 
-  it('should render with children', () => {
+  it('renders with children', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
         <Sidebar>
@@ -32,7 +32,7 @@ describe('Navbar', () => {
     ).toEqual(heading);
   });
 
-  it('should pass wrapper props', () => {
+  it('passes wrapper props', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
         <Sidebar width="300px" bg="black">
@@ -45,7 +45,7 @@ describe('Navbar', () => {
     expect(wrapper.find(Wrapper).prop('bg')).toEqual('black');
   });
 
-  it('should render Sidebar.Offset properly', () => {
+  it('renders Sidebar.Offset properly', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
         <Sidebar width="300px" bg="black">
@@ -64,5 +64,20 @@ describe('Navbar', () => {
         .text()
     ).toEqual(heading2);
     expect(wrapper.find(Offset).prop('sidebarWidth')).toEqual('300px');
+  });
+
+  it('handles placement correctly', () => {
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Sidebar width="300px" bg="black" placement="right">
+          <Heading>{heading}</Heading>
+        </Sidebar>
+        <Sidebar.Offset sidebarWidth="300px" sidebarPlacement="right">
+          <Heading>{heading2}</Heading>
+        </Sidebar.Offset>
+      </ThemeProvider>
+    );
+
+    expect(wrapper.find(Wrapper).prop('right')).toEqual(0);
   });
 });
