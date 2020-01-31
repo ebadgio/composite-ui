@@ -36,7 +36,7 @@ export const baseTheme = {
     outline: {
       border: '1px solid',
       backgroundColor: colors.gray20,
-      borderColor: colors.gray80,
+      borderColor: colors.gray60,
       color: colors.black,
       transition: 'border-color .25s ease',
       '&:hover': {

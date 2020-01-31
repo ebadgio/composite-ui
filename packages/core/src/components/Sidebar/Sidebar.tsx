@@ -16,7 +16,7 @@ import {
 import styled from '@emotion/styled';
 import { spaceDefaults } from '../../config/theme';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -41,6 +41,20 @@ Wrapper.defaultProps = {
   width: '250px'
 };
 
+interface IOffsetProps {
+  sidebarWidth?: string;
+}
+
+export const Offset = styled.div<IOffsetProps>`
+  display: flex;
+  width: ${props => `calc(100% - ${props.sidebarWidth})`};
+  margin-left: ${props => props.sidebarWidth};
+`;
+
+Offset.defaultProps = {
+  sidebarWidth: '250px'
+};
+
 export interface ISidebarProps
   extends WidthProps,
     BackgroundColorProps,
@@ -51,21 +65,10 @@ export interface ISidebarProps
   children: React.ReactNode;
 }
 
-export const Sidebar = (props: ISidebarProps) => {
-  const wrapperProps = {
-    width: props.width,
-    backgroundColor: props.bg || props.backgroundColor,
-    padding: props.p || props.padding,
-    paddingTop: props.pt || props.paddingTop,
-    paddingBottom: props.pb || props.paddingBottom,
-    paddingRight: props.pr || props.paddingRight,
-    paddingLeft: props.pl || props.paddingLeft,
-    px: props.px,
-    py: props.py,
-    zIndex: props.zIndex,
-    borderRight: props.borderRight,
-    borderLeft: props.borderLeft
-  };
+export class Sidebar extends React.Component<ISidebarProps, {}> {
+  public static Offset = Offset;
 
-  return <Wrapper {...wrapperProps}>{props.children}</Wrapper>;
-};
+  render() {
+    return <Wrapper {...this.props} />;
+  }
+}
