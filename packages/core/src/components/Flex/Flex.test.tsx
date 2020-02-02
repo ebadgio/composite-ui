@@ -5,7 +5,6 @@ import { Flex } from './Flex';
 describe('Flex', () => {
   let text1: string;
   let text2: string;
-  let color: string;
   let width: string;
   let height: string;
   let ml: number;
@@ -13,7 +12,6 @@ describe('Flex', () => {
   beforeAll(() => {
     text1 = 'Hello 1';
     text2 = 'Hello 2';
-    color = '#000';
     width = '100px';
     height = '40px';
     ml = 2;
@@ -57,11 +55,10 @@ describe('Flex', () => {
 
   it('should still support the Box props', () => {
     const wrapper = mount(
-      <Flex color={color} width={width} height={height} ml={2}>
+      <Flex width={width} height={height} ml={2}>
         {text1}
       </Flex>
     );
-    expect(wrapper.prop('color')).toEqual(color);
     expect(wrapper.prop('width')).toEqual(width);
     expect(wrapper.prop('height')).toEqual(height);
     expect(wrapper.prop('ml')).toEqual(ml);

@@ -20,8 +20,8 @@ export interface ITextAreaProps
     SpaceProps,
     FontSizeProps,
     VariantStyleProps {
-  height: number | string;
-  width: number | string; // needed in order to avoid typescript/react error for html input elem types
+  height?: number | string;
+  width?: number | string; // needed in order to avoid typescript/react error for html input elem types
 }
 
 export const TextArea = styled.textarea<ITextAreaProps>`

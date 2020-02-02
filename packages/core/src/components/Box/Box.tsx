@@ -8,7 +8,8 @@ import {
   LayoutProps,
   ColorProps,
   BorderProps,
-  BoxShadowProps
+  BoxShadowProps,
+  BackgroundColorProps
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
@@ -18,7 +19,8 @@ export interface IBoxProps
     SpaceProps,
     LayoutProps,
     BorderProps,
-    BoxShadowProps {}
+    BoxShadowProps,
+    BackgroundColorProps {}
 
 export const Box = styled.div<IBoxProps>`
   box-sizing: border-box;

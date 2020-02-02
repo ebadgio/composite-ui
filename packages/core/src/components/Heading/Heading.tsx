@@ -23,7 +23,7 @@ enum HeadingLevels {
 }
 
 export interface IHeadingProps
-  extends Merge<ColorProps, React.HTMLAttributes<HTMLDivElement>>,
+  extends ColorProps,
     TypographyProps,
     MarginProps {
   level?: HeadingLevels;
