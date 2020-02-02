@@ -1,0 +1,30 @@
+{
+  "name": "site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "ebadgio <eb27@rice.edu>",
+  "homepage": "https://github.com/ebadgio/composite-ui#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebadgio/composite-ui.git"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ebadgio/composite-ui/issues"
+  },
+  "dependencies": {
+    "@composite-ui/core": "^0.0.0",
+    "@mdx-js/loader": "^1.5.5",
+    "@next/mdx": "^9.2.1",
+    "next": "^9.2.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
