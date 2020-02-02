@@ -28,6 +28,7 @@ export interface IHeadingProps
     MarginProps {
   level?: HeadingLevels;
   theme?: string;
+  children: React.ReactNode;
 }
 
 export const HeadingBase = styled('div', { shouldForwardProp })`

@@ -2,21 +2,29 @@
   "name": "@composite-ui/core",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "ebadgio <eb27@rice.edu>",
+  "author": "ebadgio <eli.badgio@gmail.com>",
   "homepage": "https://github.com/ebadgio/composite-ui#readme",
   "license": "ISC",
-  "main": "lib/index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "esnext": "lib/esnext/index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
-    "build": "tsc -p ./src",
-    "dev": "tsc -w -p ./src"
+    "clean": "rm -rf lib/*",
+    "build": "run-p \"build:*\"",
+    "build:esm": "tsc -p ./src",
+    "build:cjs": "tsc -p ./src -m commonjs --outDir lib/cjs",
+    "build:esnext": "tsc -p ./src -t esnext --outDir lib/esnext",
+    "dev": "tsc -w -p ./src",
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "tslib": "^1.10.0"
   },
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+  "peerDependencies": {
+    "@emotion/core": "10.x",
+    "@emotion/styled": "10.x",
+    "react": "^16.x",
+    "react-dom": "^16.x"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
@@ -35,10 +43,15 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-system": "^5.1.2",
     "typescript": "^3.7.2"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
   },
   "files": [
     "lib"
