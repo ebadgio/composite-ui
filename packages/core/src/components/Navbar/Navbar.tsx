@@ -24,6 +24,7 @@ const Wrapper = styled('div')`
   top: 0;
   display: flex;
   justify-content: center;
+  left: 0;
   ${color}
   ${boxShadow}
   ${borderBottom}
