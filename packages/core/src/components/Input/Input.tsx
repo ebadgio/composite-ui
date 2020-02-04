@@ -12,6 +12,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import { inputStyles } from '../../config/variants';
 
 export interface IInputProps
@@ -24,7 +25,7 @@ export interface IInputProps
   width?: number | string; // needed in order to avoid typescript/react error for html input elem types
 }
 
-export const Input = styled.input<IInputProps>`
+export const Input = styled('input', { shouldForwardProp })<IInputProps>`
   ${width}
   ${height}
   ${fontSize}

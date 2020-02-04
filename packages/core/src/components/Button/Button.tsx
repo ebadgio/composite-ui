@@ -16,6 +16,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 export interface IButtonProps
   extends Merge<ColorProps, React.HTMLAttributes<HTMLButtonElement>>,
@@ -26,7 +27,7 @@ export interface IButtonProps
     FontWeightProps,
     ButtonStyleProps {}
 
-export const Button = styled.button<IButtonProps>`
+export const Button = styled('button', { shouldForwardProp })<IButtonProps>`
   ${space}
   ${layout}
   ${color}

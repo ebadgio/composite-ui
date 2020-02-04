@@ -13,6 +13,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 export interface IBoxProps
   extends Merge<ColorProps, React.HTMLAttributes<HTMLDivElement>>,
@@ -22,7 +23,7 @@ export interface IBoxProps
     BoxShadowProps,
     BackgroundColorProps {}
 
-export const Box = styled.div<IBoxProps>`
+export const Box = styled('div', { shouldForwardProp })<IBoxProps>`
   box-sizing: border-box;
   ${space}
   ${layout}

@@ -7,6 +7,7 @@ import {
   ColorProps
 } from 'styled-system';
 import styled from '@emotion/styled';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
 
 export interface ITextProps
@@ -14,7 +15,7 @@ export interface ITextProps
     TypographyProps,
     MarginProps {}
 
-export const Text = styled.p<ITextProps>`
+export const Text = styled('p', { shouldForwardProp })<ITextProps>`
   ${typography}
   ${color}
   ${margin}

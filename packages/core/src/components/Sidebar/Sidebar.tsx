@@ -16,9 +16,10 @@ import {
   BorderLeftProps
 } from 'styled-system';
 import styled from '@emotion/styled';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import { spaceDefaults } from '../../config/theme';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled('div', { shouldForwardProp })`
   position: fixed;
   display: flex;
   flex-direction: column;

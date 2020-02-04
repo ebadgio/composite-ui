@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import { tabStyles, activeTabStyleFn } from '../../config/variants';
 import { colors } from '../../config/theme';
 
@@ -8,7 +9,7 @@ interface ITabBaseProps extends VariantStyleProps {
   active?: boolean;
 }
 
-const TabBase = styled.div`
+const TabBase = styled('div', { shouldForwardProp })`
   box-sizing: border-box;
   padding: 12px 16px;
   cursor: pointer;

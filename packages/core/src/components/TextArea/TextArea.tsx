@@ -12,6 +12,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import * as React from 'react';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import { inputStyles } from '../../config/variants';
 
 export interface ITextAreaProps
@@ -24,7 +25,9 @@ export interface ITextAreaProps
   width?: number | string; // needed in order to avoid typescript/react error for html input elem types
 }
 
-export const TextArea = styled.textarea<ITextAreaProps>`
+export const TextArea = styled('textarea', { shouldForwardProp })<
+  ITextAreaProps
+>`
   ${width}
   ${height}
   ${fontSize}
