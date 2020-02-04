@@ -15,5 +15,6 @@
     "module": "es2015",
     "moduleResolution": "node"
   },
-  "include": ["global.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["global.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["**/*.test.tsx"]
 }
