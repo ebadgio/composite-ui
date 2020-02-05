@@ -18,11 +18,21 @@ export const shadowDefaults = [
   '0px 3px 10px rgba(0, 0, 0, 0.06)'
 ];
 
+export const breakpoints = [
+  420, // mobile phones
+  780, // small tablets, large phones
+  840, // tablets
+  1200, // small laptops and tablet landsacpes
+  1500, // mid-size laptops
+  1920 // large laptops
+];
+
 export const baseTheme = {
   space: spaceDefaults,
   fontSizes: fontSizeDefaults,
   shadows: shadowDefaults,
   colors: colors,
+  breakpoints: breakpoints,
   buttons: {
     primary: {
       backgroundColor: colors.black60,
