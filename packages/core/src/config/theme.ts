@@ -1,13 +1,15 @@
 export const colors = {
-  white: '#fff',
-  black: '#212121',
-  black60: '#424242',
-  black40: '#606060',
-  gray: '#757575',
-  gray80: '#D9DBDC',
-  gray60: '#EEF0F2',
-  gray40: '#F4F5F6',
-  gray20: '#FAFAFB'
+  text: {
+    primary: '#212121',
+    secondary: '#424242',
+    light: '#757575'
+  },
+  background: {
+    primary: '#fff',
+    secondary: '#F4F5F6'
+  },
+  black: ['#212121', '#424242', '#606060'],
+  gray: ['#757575', '#D9DBDC', '#EEF0F2', '#F4F5F6', '#FAFAFB']
 };
 
 export const spaceDefaults = [0, 4, 8, 16, 32, 64, 128, 256, 512];
@@ -35,43 +37,53 @@ export const baseTheme = {
   breakpoints: breakpoints,
   buttons: {
     primary: {
-      backgroundColor: colors.black60,
-      color: colors.white,
+      backgroundColor: colors.black[1],
+      color: '#fff',
       '&:hover': {
-        backgroundColor: colors.black40
+        backgroundColor: colors.black[2]
+      }
+    },
+    outline: {
+      primary: {
+        color: colors.black[1],
+        border: '1px solid',
+        '&:hover': {
+          backgroundColor: colors.black[1],
+          color: '#fff'
+        }
       }
     }
   },
   inputs: {
     outline: {
       border: '1px solid',
-      backgroundColor: colors.gray20,
-      borderColor: colors.gray60,
+      borderColor: colors.gray[1],
       color: colors.black,
       transition: 'border-color .25s ease',
       '&:hover': {
-        borderColor: colors.gray
+        borderColor: colors.black[2]
       },
       '&:focus': {
-        borderColor: colors.gray
+        borderColor: colors.black[1],
+        boxShadow: '0 0 0 2px rgba(66,66,66,.3)'
       }
     }
   },
   tabs: {
     basic: {
       '&:hover': {
-        color: colors.black60
+        color: colors.black[0]
       },
       activeStyles: {
-        color: colors.black60
+        color: colors.black[0]
       }
     },
     outline: {
       '&:hover': {
-        color: colors.black
+        color: colors.black[0]
       },
       activeStyles: {
-        color: colors.black,
+        color: colors.black[0],
         '&::after': {
           bottom: 0,
           right: 0,
@@ -80,7 +92,7 @@ export const baseTheme = {
           content: '""',
           height: '2px',
           width: '100%',
-          backgroundColor: colors.black
+          backgroundColor: colors.black[0]
         }
       }
     },
@@ -88,11 +100,11 @@ export const baseTheme = {
       padding: `8px 16px`,
       borderRadius: '4px',
       '&:hover': {
-        color: colors.black
+        color: colors.black[0]
       },
       activeStyles: {
-        color: colors.black,
-        backgroundColor: colors.gray40
+        color: colors.black[0],
+        backgroundColor: colors.gray[3]
       }
     }
   }

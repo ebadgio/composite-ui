@@ -20,3 +20,9 @@ export const Text = styled('p', { shouldForwardProp })<ITextProps>`
   ${color}
   ${margin}
 `;
+
+Text.defaultProps = {
+  fontSize: '16px',
+  lineHeight: '1.4em',
+  color: 'text.primary'
+};

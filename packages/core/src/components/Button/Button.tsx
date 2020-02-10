@@ -37,7 +37,7 @@ export const Button = styled('button', { shouldForwardProp })<IButtonProps>`
   ${buttonStyle}
   cursor: pointer;
   box-sizing: border-box;
-  transition: background .25s ease, background-color .25s ease;
+  transition: all .25s ease;
   &:focus {
     outline: none;
   }

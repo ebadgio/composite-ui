@@ -14,7 +14,7 @@ const TabBase = styled('div', { shouldForwardProp })`
   padding: 12px 16px;
   cursor: pointer;
   position: relative;
-  color: ${colors.gray};
+  color: ${colors.gray[0]};
   transition: all 0.25s ease;
   ${tabStyles}
   ${activeTabStyleFn}
