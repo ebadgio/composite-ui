@@ -1,3 +1,22 @@
+export interface ITheme {
+  colors: {
+    [key: string]: any;
+  };
+  space: Array<number>;
+  fontSizes: Array<number>;
+  shadows: Array<string>;
+  breakpoints: Array<number>;
+  buttons: {
+    [key: string]: any;
+  };
+  input: {
+    [key: string]: any;
+  };
+  tabs: {
+    [key: string]: any;
+  };
+}
+
 export const colors = {
   text: {
     primary: '#212121',

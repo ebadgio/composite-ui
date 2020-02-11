@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ThemeContext } from '@emotion/core';
+import { baseTheme } from '../config/theme';
 
 interface IThemeProviderProps {
   theme: object | ((theme: object) => object);
@@ -21,4 +22,8 @@ export const ThemeProvider = (props: IThemeProviderProps) => {
       }}
     </ThemeContext.Consumer>
   );
+};
+
+ThemeProvider.defaultProps = {
+  theme: baseTheme
 };

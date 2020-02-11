@@ -11,4 +11,5 @@ export { Heading, IHeadingProps } from './components/Heading';
 export { Sidebar, ISidebarProps } from './components/Sidebar';
 export { GlobalStyles } from './components/GlobalStyles';
 export { ThemeProvider } from './components/ThemeProvider';
+export { useTheme } from './hooks/useTheme';
 export { baseTheme } from './config/theme';
