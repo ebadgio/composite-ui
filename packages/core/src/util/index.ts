@@ -10,4 +10,12 @@ export const variantExtension = ({ variantKey, extensionKey, prop }) => {
   return fn;
 };
 
-export const px = (num: string | number) => num + 'px';
+export const px = (num: string | number): string => num + 'px';
+
+export const em = (num: string | number): string => num + 'em';
+
+export const matchesAbove = (width: string): boolean =>
+  window.matchMedia(`screen and (min-width: ${width})`).matches;
+
+export const matchesBelow = (width: string) =>
+  window.matchMedia(`screen and (max-width: ${width})`).matches;

@@ -1,3 +1,4 @@
+// Components
 export { Box, IBoxProps } from './components/Box';
 export { Text, ITextProps } from './components/Text';
 export { Flex, IFlexProps } from './components/Flex';
@@ -11,5 +12,10 @@ export { Heading, IHeadingProps } from './components/Heading';
 export { Sidebar, ISidebarProps } from './components/Sidebar';
 export { GlobalStyles } from './components/GlobalStyles';
 export { ThemeProvider } from './components/ThemeProvider';
+
+// Hooks
 export { useTheme } from './hooks/useTheme';
+export { useWindowMatch } from './hooks/useWindowMatch';
+
+// Configs
 export { baseTheme } from './config/theme';
