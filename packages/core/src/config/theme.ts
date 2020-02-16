@@ -65,7 +65,7 @@ export const baseTheme = {
     outline: {
       primary: {
         color: colors.black[1],
-        border: '1px solid',
+        border: `1px solid ${colors.black[1]}`,
         '&:hover': {
           backgroundColor: colors.black[1],
           color: '#fff'
