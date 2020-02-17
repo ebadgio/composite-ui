@@ -13,8 +13,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": "next start"
   },
   "bugs": {
     "url": "https://github.com/ebadgio/composite-ui/issues"

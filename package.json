@@ -4,6 +4,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "test": "lerna run --parallel test"
+  },
   "devDependencies": {
     "husky": "^3.0.9",
     "lerna": "^3.18.4",
