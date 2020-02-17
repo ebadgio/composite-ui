@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  get,
   width,
   color,
   padding,
@@ -25,6 +26,7 @@ import {
 } from '@styled-system/should-forward-prop';
 import { Flex } from '../Flex';
 import { useWindowMatch } from '../../hooks/useWindowMatch';
+import { useTheme } from '../../hooks/useTheme';
 
 export const shouldForwardProp = createShouldForwardProp([...props, 'open']);
 
@@ -74,6 +76,8 @@ export interface IDrawerProps
   placement?: 'left' | 'right';
   responsive?: boolean;
   triggerRef?: React.RefObject<HTMLElement>;
+  shouldHideAtIndex?: number;
+  shouldHideAtWidth?: string;
 }
 
 const placementTransforms = {
@@ -86,16 +90,22 @@ const Menu = (props: IDrawerProps) => {
     if (props.triggerRef) {
       /*
         There are two cases where we want to click the trigger to change the drawer state:
-        1. If the drawer is open and we are now below resize threshold then close the drawer
-        2. If the drawer is closed and we are now above resize threshold
+        1. If the drawer is open and we are now below responsive threshold then close the drawer
+        2. If the drawer is closed and we are now above responsive threshold
       */
-      if ((open && match) || (open && !match)) {
+      if ((props.open && match) || (!props.open && !match)) {
         props.triggerRef.current.click();
       }
     }
   };
 
-  const matches = useWindowMatch('790px', handleChange);
+  const theme = useTheme();
+  const matchWidth = props.shouldHideAtWidth
+    ? props.shouldHideAtWidth
+    : props.shouldHideAtIndex
+    ? get(theme, `breakpoints.${props.shouldHideAtIndex}`)
+    : get(theme, `breakpoints.1`);
+  const matches = useWindowMatch(matchWidth, handleChange);
 
   // Determine variable props for wrapper
   const placement = props.placement || 'left';
