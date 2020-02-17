@@ -65,7 +65,8 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./enzyme.config.js"
+      "./enzyme.config.js",
+      "./jestSetUp.js"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
