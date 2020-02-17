@@ -16,17 +16,21 @@ import {
   BorderLeftProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 import { spaceDefaults } from '../../config/theme';
+import { transform } from '../../config/system';
+import { shouldForwardProp } from '../../config/shouldForwardProp';
+//import { Flex } from '../Flex';
 
 export const Wrapper = styled('div', { shouldForwardProp })`
   position: fixed;
   display: flex;
   flex-direction: column;
+  /* flex: 1 0 auto; */
   height: 100%;
   top: 0;
   box-sizing: border-box;
   overflow-y: auto;
+  transition: transform .2s cubic-bezier(0, 0, 0.2, 1) 0s;
   ${width}
   ${color}
   ${padding}
@@ -35,37 +39,23 @@ export const Wrapper = styled('div', { shouldForwardProp })`
   ${borderRight}
   ${right}
   ${left}
+  ${transform}
 `;
 
 Wrapper.defaultProps = {
-  zIndex: 1, // below default navbar z-index
+  zIndex: 3,
   backgroundColor: '#fff',
   pt: 50 + spaceDefaults[2], // defaults to size of navbar + space default
   px: spaceDefaults[3],
-  width: '250px',
-  left: 0
+  width: '250px'
 };
 
-interface IOffsetProps {
-  sidebarWidth?: string;
-  sidebarPlacement?: 'left' | 'right';
-}
-
-export const Offset = styled.div<IOffsetProps>`
+export const Offset = styled.div`
   display: flex;
-  width: ${props => `calc(100% - ${props.sidebarWidth})`};
-  margin-left: ${props =>
-    props.sidebarPlacement === 'left' && props.sidebarWidth};
-  margin-right: ${props =>
-    props.sidebarPlacement === 'right' && props.sidebarWidth};
+  flex-grow: 1;
 `;
 
-Offset.defaultProps = {
-  sidebarWidth: '250px',
-  sidebarPlacement: 'left'
-};
-
-export interface ISidebarProps
+export interface IDrawerProps
   extends WidthProps,
     BackgroundColorProps,
     PaddingProps,
@@ -73,17 +63,33 @@ export interface ISidebarProps
     BorderLeftProps,
     BorderRightProps {
   children?: React.ReactNode;
-  drawer?: boolean;
   open?: boolean;
   placement?: 'left' | 'right';
 }
 
-export class Sidebar extends React.Component<ISidebarProps, {}> {
+const placementTransforms = {
+  left: 'translateX(-240px)',
+  right: 'translateX(240px)'
+};
+
+const Menu = (props: IDrawerProps) => {
+  const placement = props.placement || 'left';
+  const transform = props.open ? undefined : placementTransforms[placement];
+  const right = placement === 'right' ? 0 : undefined;
+  const left = placement === 'left' ? 0 : undefined;
+
+  return (
+    // <Flex width={props.width || '250px'} flexShrink={0}>
+    //   <Wrapper {...props} right={props.placement === 'right' && 0} />
+    // </Flex>
+    <Wrapper {...props} right={right} left={left} transform={transform} />
+  );
+};
+
+export class Drawer extends React.Component<IDrawerProps, {}> {
   public static Offset = Offset;
 
   render() {
-    return (
-      <Wrapper {...this.props} right={this.props.placement === 'right' && 0} />
-    );
+    return <Menu {...this.props} />;
   }
 }

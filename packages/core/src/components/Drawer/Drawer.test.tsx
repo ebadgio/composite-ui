@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { ThemeProvider } from '../ThemeProvider';
 import { baseTheme } from '../../config/theme';
-import { Sidebar, Wrapper, Offset } from './Sidebar';
+import { Drawer, Wrapper, Offset } from './Drawer';
 import { Heading } from '../Heading';
 
 describe('Navbar', () => {
@@ -11,16 +11,16 @@ describe('Navbar', () => {
   let heading2: string;
 
   beforeAll(() => {
-    heading = 'This is a sidebar';
+    heading = 'This is a drawer';
     heading2 = 'This is the offset content';
   });
 
   it('renders with children', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
-        <Sidebar>
+        <Drawer>
           <Heading>{heading}</Heading>
-        </Sidebar>
+        </Drawer>
       </ThemeProvider>
     );
 
@@ -35,9 +35,9 @@ describe('Navbar', () => {
   it('passes wrapper props', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
-        <Sidebar width="300px" bg="black">
+        <Drawer width="300px" bg="black">
           <Heading>{heading}</Heading>
-        </Sidebar>
+        </Drawer>
       </ThemeProvider>
     );
 
@@ -45,15 +45,15 @@ describe('Navbar', () => {
     expect(wrapper.find(Wrapper).prop('bg')).toEqual('black');
   });
 
-  it('renders Sidebar.Offset properly', () => {
+  it('renders Drawer.Offset properly', () => {
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
-        <Sidebar width="300px" bg="black">
+        <Drawer width="300px" bg="black">
           <Heading>{heading}</Heading>
-        </Sidebar>
-        <Sidebar.Offset sidebarWidth="300px">
+        </Drawer>
+        <Drawer.Offset>
           <Heading>{heading2}</Heading>
-        </Sidebar.Offset>
+        </Drawer.Offset>
       </ThemeProvider>
     );
 
@@ -63,21 +63,5 @@ describe('Navbar', () => {
         .find(Heading)
         .text()
     ).toEqual(heading2);
-    expect(wrapper.find(Offset).prop('sidebarWidth')).toEqual('300px');
-  });
-
-  it('handles placement correctly', () => {
-    wrapper = mount(
-      <ThemeProvider theme={baseTheme}>
-        <Sidebar width="300px" bg="black" placement="right">
-          <Heading>{heading}</Heading>
-        </Sidebar>
-        <Sidebar.Offset sidebarWidth="300px" sidebarPlacement="right">
-          <Heading>{heading2}</Heading>
-        </Sidebar.Offset>
-      </ThemeProvider>
-    );
-
-    expect(wrapper.find(Wrapper).prop('right')).toEqual(0);
   });
 });

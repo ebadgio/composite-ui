@@ -40,12 +40,12 @@ export const shadowDefaults = [
 ];
 
 export const breakpoints = [
-  420, // mobile phones
-  780, // small tablets, large phones
-  840, // tablets
-  1200, // small laptops and tablet landsacpes
-  1500, // mid-size laptops
-  1920 // large laptops
+  '420px', // mobile phones
+  '780px', // small tablets, large phones
+  '840px', // tablets
+  '1200px', // small laptops and tablet landsacpes
+  '1500px', // mid-size laptops
+  '1920px' // large laptops
 ];
 
 export const baseTheme = {
