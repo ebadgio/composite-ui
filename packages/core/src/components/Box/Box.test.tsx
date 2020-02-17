@@ -22,6 +22,6 @@ describe('Box', () => {
         .find('div')
         .first()
         .text()
-    ).toEqual('Hello');
+    ).toEqual('Hello-not');
   });
 });
