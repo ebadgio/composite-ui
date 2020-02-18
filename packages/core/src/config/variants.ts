@@ -14,3 +14,9 @@ export const activeTabStyleFn = variantExtension({
   extensionKey: 'activeStyles',
   prop: 'active'
 });
+
+/* Styled system types */
+type ResponsiveValue<T> = T | Array<T | null> | { [key: string]: T };
+export interface VariantStyleProps {
+  variant?: ResponsiveValue<string>;
+}

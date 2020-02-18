@@ -13,7 +13,7 @@ import {
 import styled from '@emotion/styled';
 import * as React from 'react';
 import shouldForwardProp from '@styled-system/should-forward-prop';
-import { inputStyles } from '../../config/variants';
+import { inputStyles, VariantStyleProps } from '../../config/variants';
 
 export interface IInputProps
   extends Merge<ColorProps, React.HTMLAttributes<HTMLInputElement>>,
