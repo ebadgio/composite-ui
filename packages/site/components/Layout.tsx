@@ -1,8 +1,19 @@
-import React from 'react';
-import { Sidebar, Tabs, Heading, Navbar, Flex, Box } from '@composite-ui/core';
+import React, { useState } from 'react';
+import {
+  Drawer,
+  Tabs,
+  Heading,
+  Navbar,
+  Flex,
+  Box,
+  useWindowMatch,
+  Button
+} from '@composite-ui/core';
 
 const Layout = ({ children }) => {
-  const [activeTab, setActiveTab] = React.useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(true);
+  const matches = useWindowMatch('790px');
 
   return (
     <>
@@ -10,7 +21,7 @@ const Layout = ({ children }) => {
         backgroundColor="#fff"
         title={
           <Flex alignItems="center">
-            <img src="/assets/icon.svg" height="40px" />
+            <img src="/assets/icon.png" height="40px" />
             <Heading level={2} ml={2}>
               COMPOSITE UI
             </Heading>
@@ -18,9 +29,16 @@ const Layout = ({ children }) => {
         }
         boxShadow={1}
       >
-        <div />
+        {matches && (
+          <Button onClick={() => setDrawerOpen(!drawerOpen)}>Menu</Button>
+        )}
       </Navbar>
-      <Sidebar borderRight={`1px solid #EEF0F2`} pt="82px">
+      <Drawer
+        borderRight={`1px solid #EEF0F2`}
+        pt="82px"
+        responsive
+        shouldHideAtWidth="790px"
+      >
         <Tabs
           vertical
           activeTab={activeTab}
@@ -42,12 +60,12 @@ const Layout = ({ children }) => {
             setActiveTab(id + 2);
           }}
         ></Tabs>
-      </Sidebar>
-      <Sidebar.Offset>
+      </Drawer>
+      <Drawer.Offset>
         <Box width="100%" pt="50px" pl={3}>
           {children}
         </Box>
-      </Sidebar.Offset>
+      </Drawer.Offset>
     </>
   );
 };
