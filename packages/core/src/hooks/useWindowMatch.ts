@@ -5,6 +5,9 @@ export const useWindowMatch = (
   width: string,
   onChange?: (match: boolean) => void
 ): boolean => {
+  if (typeof window === undefined) {
+    return false;
+  }
   const [matches, setMatches] = useState(matchesBelow(width));
 
   useEffect(() => {
