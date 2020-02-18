@@ -50,16 +50,27 @@ const Layout = ({ children }) => {
           <Tabs
             vertical
             activeTab={activeTab}
-            //tabs={[{ text: 'Getting started' }, { text: 'Theming' }]}
             onTabChange={(_, id) => {
               setActiveTab(id);
             }}
           >
             <Link href="/docs/getting-started">
-              <Tab variant="solid">Getting Started</Tab>
+              <Tab
+                variant="solid"
+                active={activeTab === 0}
+                onClick={() => setActiveTab(0)}
+              >
+                Getting Started
+              </Tab>
             </Link>
             <Link href="/docs/theming">
-              <Tab variant="solid">Theming</Tab>
+              <Tab
+                variant="solid"
+                active={activeTab === 1}
+                onClick={() => setActiveTab(1)}
+              >
+                Theming
+              </Tab>
             </Link>
           </Tabs>
           <Heading level={3} color="#424242" mt={3} mb={1}>
