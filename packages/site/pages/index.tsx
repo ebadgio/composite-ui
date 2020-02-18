@@ -14,7 +14,7 @@ const Main = () => {
       </Navbar>
       <Flex alignItems="start">
         <Box mr={3}>
-          <img src="/assets/icon.svg" height="180px" />
+          <img src="/assets/icon.png" height="180px" />
         </Box>
         <Flex flexDirection="column" width="450px">
           <Text fontSize={7} fontWeight="bold" color="#212121" mt={0} mb={3}>
@@ -23,7 +23,7 @@ const Main = () => {
           <Text mt={0} mb={3} fontSize={4}>
             A simple, intuitive, and design system first React component library
           </Text>
-          <Text fontWeight="bold">⚠️ Currently under development</Text>
+          <Text fontWeight="bold">⚠️ Still under active development</Text>
         </Flex>
       </Flex>
       <Flex
