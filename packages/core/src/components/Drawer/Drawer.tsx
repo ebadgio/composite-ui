@@ -130,9 +130,12 @@ const Menu = (props: IDrawerProps) => {
     : get(theme, `breakpoints.1`);
   const matches = useWindowMatch(matchWidth, handleChange);
 
+  const showIfResponsive = props.responsive && !matches;
+
   // Determine variable props for wrapper
   const placement = props.placement || 'left';
-  const transform = props.open ? undefined : placementTransforms[placement];
+  const transform =
+    props.open || showIfResponsive ? undefined : placementTransforms[placement];
   const right = placement === 'right' ? 0 : undefined;
   const left = placement === 'left' ? 0 : undefined;
 
@@ -148,7 +151,7 @@ const Menu = (props: IDrawerProps) => {
   );
 
   // Only use the flex element when we want a responsize drawer
-  if (props.responsive && !matches && props.open) {
+  if (showIfResponsive) {
     return (
       <Flex width={props.width || '250px'} flexShrink={0}>
         {wrapper}
