@@ -36,7 +36,7 @@ const Wrapper = styled('div', { shouldForwardProp })`
 Wrapper.defaultProps = {
   bg: '#fff',
   height: '50px',
-  zIndex: 2
+  zIndex: 3
 };
 
 interface IWrapperProps

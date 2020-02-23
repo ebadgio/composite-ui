@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { ThemeProvider } from '../ThemeProvider';
 import { baseTheme } from '../../config/theme';
-import { Drawer, Wrapper, Offset } from './Drawer';
+import { Drawer, Wrapper, Offset, Overlay } from './Drawer';
 import { Heading } from '../Heading';
 
 describe('Navbar', () => {
@@ -63,5 +63,29 @@ describe('Navbar', () => {
         .find(Heading)
         .text()
     ).toEqual(heading2);
+  });
+
+  it('passes props to Overlay component', () => {
+    // @ts-ignore
+    window.matchMedia = () => ({
+      matches: true,
+      addListener: () => {},
+      removeListener: () => {}
+    });
+
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Drawer overlayOpacity={0.75} open={true}>
+          <Heading>{heading}</Heading>
+        </Drawer>
+      </ThemeProvider>
+    );
+
+    expect(
+      wrapper
+        .find(Overlay)
+        .first()
+        .prop('opacity')
+    ).toEqual(0.75);
   });
 });
