@@ -9,6 +9,7 @@ export interface ITabsProps {
   activeTab?: number;
   onTabChange?: (event: React.SyntheticEvent, id: number) => void;
   variant?: string;
+  renderTab?: (tab: React.ReactNode, key: number) => React.ReactNode;
 }
 
 export const Tabs = (props: ITabsProps) => {
@@ -20,15 +21,21 @@ export const Tabs = (props: ITabsProps) => {
 
   const renderTabs =
     props.children ||
-    props.tabs.map((tabProps, idx) => (
-      <Tab
-        key={idx}
-        {...tabProps}
-        active={props.activeTab === idx}
-        variant={props.variant}
-        onClick={handleTabChange(idx)}
-      />
-    ));
+    props.tabs.map((tabProps, idx) => {
+      const tab = (
+        <Tab
+          key={idx}
+          {...tabProps}
+          active={props.activeTab === idx}
+          variant={props.variant}
+          onClick={handleTabChange(idx)}
+        />
+      );
+      if (props.renderTab) {
+        return props.renderTab(tab, idx);
+      }
+      return tab;
+    });
 
   const flexDirection = props.vertical ? 'column' : 'row';
 
