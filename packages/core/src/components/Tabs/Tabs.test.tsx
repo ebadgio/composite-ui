@@ -74,4 +74,20 @@ describe('Tabs', () => {
       expect(tab.prop('variant')).toEqual('outline');
     });
   });
+
+  it('should handle renderTab prop', () => {
+    const renderTab = jest.fn().mockImplementation((tab, key) => {
+      return <a key={key}>{tab}</a>;
+    });
+
+    wrapper = mount(
+      <ThemeProvider theme={baseTheme}>
+        <Tabs tabs={tabs} variant="outline" renderTab={renderTab} />
+      </ThemeProvider>
+    );
+
+    expect(renderTab).toHaveBeenCalled();
+    expect(wrapper.find('a').length).toEqual(2);
+    expect(wrapper.find(Tab).length).toEqual(2);
+  });
 });
