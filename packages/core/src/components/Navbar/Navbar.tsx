@@ -53,36 +53,38 @@ export interface INavbarProps extends IWrapperProps {
   children?: React.ReactNode;
 }
 
-export const Navbar = (props: INavbarProps) => {
-  const wrapperProps: IWrapperProps = {
-    bg: props.bg,
-    backgroundColor: props.backgroundColor,
-    color: props.color,
-    boxShadow: props.boxShadow,
-    height: props.height,
-    borderBottom: props.borderBottom
-  };
+export const Navbar = React.forwardRef(
+  (props: INavbarProps, ref: React.RefObject<HTMLDivElement>) => {
+    const wrapperProps: IWrapperProps = {
+      bg: props.bg,
+      backgroundColor: props.backgroundColor,
+      color: props.color,
+      boxShadow: props.boxShadow,
+      height: props.height,
+      borderBottom: props.borderBottom
+    };
 
-  const renderTitle = (): React.ReactNode => {
-    if (typeof props.title === 'string') {
-      return <Heading level={2}>{props.title}</Heading>;
-    }
-    return props.title;
-  };
-  return (
-    <Wrapper {...wrapperProps}>
-      <Flex
-        maxWidth="1400px"
-        height="100%"
-        p="0 20px"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
-      >
-        {props.title && <Box>{renderTitle()}</Box>}
-        {props.children}
-        {props.tabs && <Tabs tabs={props.tabs} />}
-      </Flex>
-    </Wrapper>
-  );
-};
+    const renderTitle = (): React.ReactNode => {
+      if (typeof props.title === 'string') {
+        return <Heading level={2}>{props.title}</Heading>;
+      }
+      return props.title;
+    };
+    return (
+      <Wrapper {...wrapperProps} ref={ref}>
+        <Flex
+          maxWidth="1400px"
+          height="100%"
+          p="0 20px"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
+        >
+          {props.title && <Box>{renderTitle()}</Box>}
+          {props.children}
+          {props.tabs && <Tabs tabs={props.tabs} />}
+        </Flex>
+      </Wrapper>
+    );
+  }
+);

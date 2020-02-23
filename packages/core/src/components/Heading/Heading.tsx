@@ -43,16 +43,20 @@ HeadingBase.defaultProps = {
   fontSize: px(fontSizeDefaults[5])
 };
 
-export const Heading = (props: IHeadingProps) => {
-  let fontSize: string;
-  let asProp: string;
+export const Heading = React.forwardRef(
+  (props: IHeadingProps, ref: React.RefObject<HTMLElement>) => {
+    let fontSize: string;
+    let asProp: string;
 
-  // If level is passed in, determine the corresponding 'as' and 'fontSize' props
-  if (props.level) {
-    const idx = 6 - props.level;
-    fontSize = px(get(props.theme, `fontSizes.${idx}`, fontSizeDefaults[idx]));
-    asProp = 'h' + props.level;
+    // If level is passed in, determine the corresponding 'as' and 'fontSize' props
+    if (props.level) {
+      const idx = 6 - props.level;
+      fontSize = px(
+        get(props.theme, `fontSizes.${idx}`, fontSizeDefaults[idx])
+      );
+      asProp = 'h' + props.level;
+    }
+
+    return <HeadingBase {...props} ref={ref} as={asProp} fontSize={fontSize} />;
   }
-
-  return <HeadingBase {...props} as={asProp} fontSize={fontSize} />;
-};
+);

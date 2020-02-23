@@ -102,74 +102,79 @@ const placementTransforms = {
   right: 'translateX(250px)'
 };
 
-const Menu = (props: IDrawerProps) => {
-  const handleChange = (match: boolean) => {
-    if (props.triggerRef) {
-      /*
+const Menu = React.forwardRef(
+  (props: IDrawerProps, ref: React.RefObject<HTMLDivElement>) => {
+    const handleChange = (match: boolean) => {
+      if (props.triggerRef) {
+        /*
         There are two cases where we want to click the trigger to change the parent's drawer state:
         1. If the drawer is open and we are now below responsive threshold then close the drawer
         2. If the drawer is closed and we are now above responsive threshold
       */
-      if ((props.open && match) || (!props.open && !match)) {
+        if ((props.open && match) || (!props.open && !match)) {
+          props.triggerRef.current.click();
+        }
+      }
+    };
+
+    const triggerClose = () => {
+      if (props.triggerRef) {
         props.triggerRef.current.click();
       }
+    };
+
+    const theme = useTheme();
+    const matchWidth = props.shouldHideAtWidth
+      ? props.shouldHideAtWidth
+      : props.shouldHideAtIndex
+      ? get(theme, `breakpoints.${props.shouldHideAtIndex}`)
+      : get(theme, `breakpoints.1`);
+    const matches = useWindowMatch(matchWidth, handleChange);
+
+    const showIfResponsive = props.responsive && !matches;
+
+    // Determine variable props for wrapper
+    const placement = props.placement || 'left';
+    const transform =
+      props.open || showIfResponsive
+        ? undefined
+        : placementTransforms[placement];
+    const right = placement === 'right' ? 0 : undefined;
+    const left = placement === 'left' ? 0 : undefined;
+
+    // Create wrapper element
+    const wrapper = (
+      <Wrapper
+        {...props}
+        right={right}
+        left={left}
+        transform={transform}
+        flexShrink={0}
+        ref={ref}
+      />
+    );
+
+    // Only use the flex element when we want a responsize drawer
+    if (showIfResponsive) {
+      return (
+        <Flex width={props.width || '250px'} flexShrink={0}>
+          {wrapper}
+        </Flex>
+      );
     }
-  };
 
-  const triggerClose = () => {
-    if (props.triggerRef) {
-      props.triggerRef.current.click();
-    }
-  };
-
-  const theme = useTheme();
-  const matchWidth = props.shouldHideAtWidth
-    ? props.shouldHideAtWidth
-    : props.shouldHideAtIndex
-    ? get(theme, `breakpoints.${props.shouldHideAtIndex}`)
-    : get(theme, `breakpoints.1`);
-  const matches = useWindowMatch(matchWidth, handleChange);
-
-  const showIfResponsive = props.responsive && !matches;
-
-  // Determine variable props for wrapper
-  const placement = props.placement || 'left';
-  const transform =
-    props.open || showIfResponsive ? undefined : placementTransforms[placement];
-  const right = placement === 'right' ? 0 : undefined;
-  const left = placement === 'left' ? 0 : undefined;
-
-  // Create wrapper element
-  const wrapper = (
-    <Wrapper
-      {...props}
-      right={right}
-      left={left}
-      transform={transform}
-      flexShrink={0}
-    />
-  );
-
-  // Only use the flex element when we want a responsize drawer
-  if (showIfResponsive) {
     return (
-      <Flex width={props.width || '250px'} flexShrink={0}>
+      <>
         {wrapper}
-      </Flex>
+        {props.open && (
+          <Overlay onClick={triggerClose} opacity={props.overlayOpacity} />
+        )}
+      </>
     );
   }
+);
 
-  return (
-    <>
-      {wrapper}
-      {props.open && (
-        <Overlay onClick={triggerClose} opacity={props.overlayOpacity} />
-      )}
-    </>
-  );
-};
-
-export class Drawer extends React.Component<IDrawerProps, {}> {
+export class Drawer extends React.PureComponent<IDrawerProps, {}> {
   public static Offset = Offset;
 
   render() {

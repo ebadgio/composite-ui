@@ -33,14 +33,20 @@ export interface ITabProps extends ITabBaseProps {
   children?: React.ReactNode;
 }
 
-export const Tab = (props: ITabProps) => {
-  const baseProps: ITabBaseProps = {
-    variant: props.variant,
-    onClick: props.onClick,
-    active: props.active
-  };
+export const Tab = React.forwardRef(
+  (props: ITabProps, ref: React.RefObject<HTMLDivElement>) => {
+    const baseProps: ITabBaseProps = {
+      variant: props.variant,
+      onClick: props.onClick,
+      active: props.active
+    };
 
-  const renderTab = props.children || props.text;
+    const renderTab = props.children || props.text;
 
-  return <TabBase {...baseProps}>{renderTab}</TabBase>;
-};
+    return (
+      <TabBase {...baseProps} ref={ref}>
+        {renderTab}
+      </TabBase>
+    );
+  }
+);

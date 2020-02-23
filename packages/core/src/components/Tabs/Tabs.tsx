@@ -12,32 +12,38 @@ export interface ITabsProps {
   renderTab?: (tab: React.ReactNode, key: number) => React.ReactNode;
 }
 
-export const Tabs = (props: ITabsProps) => {
-  const handleTabChange = (id: number) => (e: React.SyntheticEvent) => {
-    if (props.onTabChange) {
-      props.onTabChange(e, id);
-    }
-  };
-
-  const renderTabs =
-    props.children ||
-    props.tabs.map((tabProps, idx) => {
-      const tab = (
-        <Tab
-          key={idx}
-          {...tabProps}
-          active={props.activeTab === idx}
-          variant={props.variant}
-          onClick={handleTabChange(idx)}
-        />
-      );
-      if (props.renderTab) {
-        return props.renderTab(tab, idx);
+export const Tabs = React.forwardRef(
+  (props: ITabsProps, ref: React.RefObject<HTMLDivElement>) => {
+    const handleTabChange = (id: number) => (e: React.SyntheticEvent) => {
+      if (props.onTabChange) {
+        props.onTabChange(e, id);
       }
-      return tab;
-    });
+    };
 
-  const flexDirection = props.vertical ? 'column' : 'row';
+    const renderTabs =
+      props.children ||
+      props.tabs.map((tabProps, idx) => {
+        const tab = (
+          <Tab
+            key={idx}
+            {...tabProps}
+            active={props.activeTab === idx}
+            variant={props.variant}
+            onClick={handleTabChange(idx)}
+          />
+        );
+        if (props.renderTab) {
+          return props.renderTab(tab, idx);
+        }
+        return tab;
+      });
 
-  return <Flex flexDirection={flexDirection}>{renderTabs}</Flex>;
-};
+    const flexDirection = props.vertical ? 'column' : 'row';
+
+    return (
+      <Flex flexDirection={flexDirection} ref={ref}>
+        {renderTabs}
+      </Flex>
+    );
+  }
+);
