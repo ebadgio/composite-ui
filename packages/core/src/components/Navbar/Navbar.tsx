@@ -61,7 +61,9 @@ export const Navbar = React.forwardRef(
       color: props.color,
       boxShadow: props.boxShadow,
       height: props.height,
-      borderBottom: props.borderBottom
+      borderBottom: props.borderBottom,
+      zIndex: props.zIndex,
+      opacity: props.opacity
     };
 
     const renderTitle = (): React.ReactNode => {

@@ -45,7 +45,7 @@ export const Button = styled('button', { shouldForwardProp })<IButtonProps>`
 
 Button.defaultProps = {
   border: 0,
-  borderRadius: '4px',
+  borderRadius: 1,
   fontWeight: 'bold',
   height: '35px',
   padding: '0 16px',

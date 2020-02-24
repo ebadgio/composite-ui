@@ -5,11 +5,13 @@ export interface ITheme {
   space: Array<number>;
   fontSizes: Array<number>;
   shadows: Array<string>;
-  breakpoints: Array<number>;
+  breakpoints: Array<string>;
+  radii: Array<number | string>;
+  zIndices: Array<number>;
   buttons: {
     [key: string]: any;
   };
-  input: {
+  inputs: {
     [key: string]: any;
   };
   tabs: {
@@ -39,6 +41,16 @@ export const shadowDefaults = [
   '0px 3px 10px rgba(0, 0, 0, 0.06)'
 ];
 
+export const radii = [0, 6, 28, '50%'];
+
+export const zIndices = [
+  0,
+  1, // Overlays
+  2, // Drawer
+  3, // Navbar
+  1000 // Modal
+];
+
 export const breakpoints = [
   '420px', // mobile phones
   '780px', // small tablets, large phones
@@ -48,12 +60,14 @@ export const breakpoints = [
   '1920px' // large laptops
 ];
 
-export const baseTheme = {
+export const baseTheme: ITheme = {
   space: spaceDefaults,
   fontSizes: fontSizeDefaults,
   shadows: shadowDefaults,
   colors: colors,
   breakpoints: breakpoints,
+  radii: radii,
+  zIndices: zIndices,
   buttons: {
     primary: {
       backgroundColor: colors.black[1],
@@ -117,7 +131,7 @@ export const baseTheme = {
     },
     solid: {
       padding: `8px 16px`,
-      borderRadius: '4px',
+      borderRadius: radii[1],
       '&:hover': {
         color: colors.black[0]
       },
