@@ -40,7 +40,8 @@ export const HeadingBase = styled('div', { shouldForwardProp })`
 
 HeadingBase.defaultProps = {
   as: 'h1',
-  fontSize: px(fontSizeDefaults[5])
+  fontSize: px(fontSizeDefaults[5]),
+  color: 'text.primary'
 };
 
 export const Heading = React.forwardRef(
