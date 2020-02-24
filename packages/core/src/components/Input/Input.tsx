@@ -43,7 +43,7 @@ Input.defaultProps = {
   width: '100%',
   height: '35px',
   padding: '8px',
-  borderRadius: '4px',
+  borderRadius: 1,
   fontSize: 1,
   variant: 'outline'
 };

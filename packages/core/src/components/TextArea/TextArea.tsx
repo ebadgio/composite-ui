@@ -45,7 +45,7 @@ TextArea.defaultProps = {
   width: '100%',
   height: '100px',
   padding: '8px',
-  borderRadius: '4px',
+  borderRadius: 1,
   fontSize: 1,
   variant: 'outline'
 };
