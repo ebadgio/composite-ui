@@ -1,6 +1,6 @@
 {
   "name": "composite-ui",
-  "version": "1.0.2",
+  "version": "0.0.0",
   "description": "React component library (still under development)",
   "author": "ebadgio <eli.badgio@gmail.com>",
   "homepage": "https://github.com/ebadgio/composite-ui#readme",
@@ -85,6 +85,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "7e4a8a18d2a6e0fdb0d6c8676f1028b8e48bcd5b"
+  }
 }
