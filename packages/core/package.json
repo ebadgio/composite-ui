@@ -83,5 +83,8 @@
       "^.+\\.(ts|tsx)$": "babel-jest"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "gitHead": "d13b8bf95b6144f6e2f27727009f00f35fbb2b7d"
 }
