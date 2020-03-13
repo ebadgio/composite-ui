@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Flex, Button, Navbar } from '@composite-ui/core';
+import { Box, Text, Flex, Button, Navbar } from 'composite-ui';
 import Link from 'next/link';
 
 const Main = () => {

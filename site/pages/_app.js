@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlobalStyles, ThemeProvider, baseTheme } from '@composite-ui/core';
+import { GlobalStyles, ThemeProvider, baseTheme } from 'composite-ui';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import DocsLayout from '../components/Layout';

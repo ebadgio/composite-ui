@@ -9,7 +9,7 @@ import {
   //useWindowMatch,
   Button,
   Tab
-} from '@composite-ui/core';
+} from 'composite-ui';
 import Link from 'next/link';
 
 const Layout = ({ children }) => {
