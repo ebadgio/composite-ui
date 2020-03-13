@@ -28,6 +28,10 @@ export interface ITextAreaProps
 export const TextArea = styled('textarea', { shouldForwardProp })<
   ITextAreaProps
 >`
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
   ${width}
   ${height}
   ${fontSize}
@@ -35,10 +39,6 @@ export const TextArea = styled('textarea', { shouldForwardProp })<
   ${border}
   ${space}
   ${inputStyles}
-  box-sizing: border-box;
-  &:focus {
-    outline: none;
-  }
 `;
 
 TextArea.defaultProps = {

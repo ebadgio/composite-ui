@@ -28,6 +28,12 @@ export interface IButtonProps
     ButtonStyleProps {}
 
 export const Button = styled('button', { shouldForwardProp })<IButtonProps>`
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all .25s ease;
+  &:focus {
+    outline: none;
+  }
   ${space}
   ${layout}
   ${color}
@@ -35,12 +41,6 @@ export const Button = styled('button', { shouldForwardProp })<IButtonProps>`
   ${fontSize}
   ${fontWeight}
   ${buttonStyle}
-  cursor: pointer;
-  box-sizing: border-box;
-  transition: all .25s ease;
-  &:focus {
-    outline: none;
-  }
 `;
 
 Button.defaultProps = {

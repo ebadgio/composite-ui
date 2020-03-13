@@ -6,7 +6,6 @@ import {
   activeTabStyleFn,
   VariantStyleProps
 } from '../../config/variants';
-import { colors } from '../../config/theme';
 
 interface ITabBaseProps extends VariantStyleProps {
   onClick?: (e: React.SyntheticEvent) => void;
@@ -18,13 +17,13 @@ const TabBase = styled('div', { shouldForwardProp })`
   padding: 12px 16px;
   cursor: pointer;
   position: relative;
-  color: ${colors.gray[0]};
   transition: all 0.25s ease;
   ${tabStyles}
   ${activeTabStyleFn}
 `;
 
 TabBase.defaultProps = {
+  color: 'text.light',
   variant: 'basic'
 };
 

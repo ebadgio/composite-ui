@@ -26,6 +26,10 @@ export interface IInputProps
 }
 
 export const Input = styled('input', { shouldForwardProp })<IInputProps>`
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
   ${width}
   ${height}
   ${fontSize}
@@ -33,10 +37,6 @@ export const Input = styled('input', { shouldForwardProp })<IInputProps>`
   ${border}
   ${space}
   ${inputStyles}
-  box-sizing: border-box;
-  &:focus {
-    outline: none;
-  }
 `;
 
 Input.defaultProps = {

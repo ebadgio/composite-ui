@@ -32,10 +32,10 @@ export interface IHeadingProps
 }
 
 export const HeadingBase = styled('div', { shouldForwardProp })`
+  font-weight: bold;
   ${color}
   ${typography}
   ${margin}
-  font-weight: bold;
 `;
 
 HeadingBase.defaultProps = {
