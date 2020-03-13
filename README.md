@@ -38,7 +38,7 @@ export default props => (
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <App />
-  </Theme>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 ```
