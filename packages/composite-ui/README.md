@@ -14,17 +14,17 @@ A modular, intuitive, and design system first React component library. Built on 
 
 ```sh
 // with npm
-npm install @composite-ui/core
+npm install composite-ui
 
 // with yarn
-yarn add @composite-ui/core
+yarn add composite-ui
 ```
 
 ## Usage
 
 ```jsx
 import React from 'react';
-import { ThemeProvider, theme, Button } from '@composite-ui/core';
+import { ThemeProvider, theme, Button } from 'composite-ui';
 // ... or import a custom theme
 
 function App() {
