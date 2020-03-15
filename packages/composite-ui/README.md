@@ -14,10 +14,10 @@ A modular, intuitive, and design system first React component library. Built on 
 
 ```sh
 // with npm
-npm install composite-ui
+npm install composite-ui @emotion/core @emotion/styled
 
 // with yarn
-yarn add composite-ui
+yarn add composite-ui @emotion/core @emotion/styled
 ```
 
 ## Usage
