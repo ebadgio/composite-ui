@@ -110,7 +110,7 @@ const Menu = React.forwardRef(
         There are two cases where we want to click the trigger to change the parent's drawer state:
         1. If the drawer is open and we are now below responsive threshold then close the drawer
         2. If the drawer is closed and we are now above responsive threshold
-      */
+        */
         if ((props.open && match) || (!props.open && !match)) {
           props.triggerRef.current.click();
         }
