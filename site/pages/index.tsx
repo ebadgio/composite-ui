@@ -24,33 +24,20 @@ const Main = () => {
             A simple, intuitive, and design system first React component library
           </Text>
           <Text fontWeight="bold">⚠️ Still under active development</Text>
+          <Flex>
+            <Link href="/docs/getting-started">
+              <Button variant="primary">Get Started</Button>
+            </Link>
+            <a
+              href="https://www.github.com/ebadgio/composite-ui"
+              target="_blank"
+            >
+              <Button variant="outline.primary" ml={3}>
+                Github
+              </Button>
+            </a>
+          </Flex>
         </Flex>
-      </Flex>
-      <Flex
-        width="100%"
-        px={6}
-        py={3}
-        justifyContent="space-between"
-        flexWrap="wrap"
-      >
-        <Box
-          height="150px"
-          width="150px"
-          boxShadow={2}
-          borderRadius="50%"
-        ></Box>
-        <Box
-          height="150px"
-          width="150px"
-          boxShadow={2}
-          borderRadius="50%"
-        ></Box>
-        <Box
-          height="150px"
-          width="150px"
-          boxShadow={2}
-          borderRadius="50%"
-        ></Box>
       </Flex>
     </Box>
   );

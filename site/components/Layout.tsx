@@ -6,7 +6,6 @@ import {
   Navbar,
   Flex,
   Box,
-  //useWindowMatch,
   Button,
   Tab
 } from 'composite-ui';
@@ -14,8 +13,7 @@ import Link from 'next/link';
 
 const Layout = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(true);
-  //const matches = useWindowMatch('790px');
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const trigger = useRef(null);
 
   return (
