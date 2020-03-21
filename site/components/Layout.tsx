@@ -11,6 +11,8 @@ import {
 } from 'composite-ui';
 import Link from 'next/link';
 
+const componentTabs = [{ text: 'Box' }, { text: 'Flex' }, { text: 'Text' }];
+
 const Layout = ({ children }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -78,14 +80,22 @@ const Layout = ({ children }) => {
             vertical
             activeTab={activeTab - 2}
             variant="solid"
-            tabs={[{ text: 'Box' }, { text: 'Flex' }, { text: 'Text' }]}
+            tabs={componentTabs}
             onTabChange={(_, id) => {
               setActiveTab(id + 2);
             }}
+            renderTab={(tab, key) => (
+              <Link
+                href={`/docs/${componentTabs[key].text.toLowerCase()}`}
+                key={key}
+              >
+                {tab}
+              </Link>
+            )}
           ></Tabs>
         </Drawer>
         <Drawer.Offset>
-          <Box width="500px" pt="50px" pl={3}>
+          <Box width="500px" pt="50px" pl={4} maxWidth="100%">
             {children}
           </Box>
         </Drawer.Offset>
