@@ -3,6 +3,9 @@ export interface ITheme {
     [key: string]: any;
   };
   space: Array<number>;
+  fonts: {
+    [key: string]: any;
+  };
   fontSizes: Array<number>;
   shadows: Array<string>;
   breakpoints: Array<string>;
@@ -34,7 +37,6 @@ export const colors = {
 };
 
 export const spaceDefaults = [0, 4, 8, 16, 32, 64, 128, 256, 512];
-export const fontSizeDefaults = [12, 14, 16, 20, 24, 32, 48, 64, 72];
 export const shadowDefaults = [
   'none',
   '0px 1px 5px rgba(0,0,0,0.12)',
@@ -60,8 +62,16 @@ export const breakpoints = [
   '1920px' // large laptops
 ];
 
+export const fonts = {
+  body:
+    "-apple-system,BlinkMacSystemFont,'Segoe UI','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif"
+};
+
+export const fontSizeDefaults = [12, 14, 16, 20, 24, 32, 48, 64, 72];
+
 export const baseTheme: ITheme = {
   space: spaceDefaults,
+  fonts: fonts,
   fontSizes: fontSizeDefaults,
   shadows: shadowDefaults,
   colors: colors,
