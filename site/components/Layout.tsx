@@ -14,8 +14,7 @@ import { useRouter } from 'next/router';
 
 const componentTabs = [
   { text: 'Box', href: '/docs/box' },
-  { text: 'Flex', href: '/docs/flex' },
-  { text: 'Text', href: '/docs/text' }
+  { text: 'Flex', href: '/docs/flex' }
 ];
 
 const Layout = ({ children }) => {

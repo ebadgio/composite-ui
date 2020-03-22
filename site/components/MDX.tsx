@@ -11,11 +11,21 @@ const H3 = props => <Heading level={3} {...props} />;
 const P = props => <Text {...props} />;
 
 /* Links */
-const A = props => (
-  <Link href={props.href}>
-    <a>{props.children}</a>
-  </Link>
-);
+const A = props => {
+  const href = props.href as string;
+  if (href.startsWith('http')) {
+    return (
+      <a target="_blank" href={href}>
+        {props.children}
+      </a>
+    );
+  }
+  return (
+    <Link href={props.href}>
+      <a>{props.children}</a>
+    </Link>
+  );
+};
 
 export default {
   h1: H1,

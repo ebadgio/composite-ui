@@ -1,31 +1,75 @@
+import { Flex } from 'composite-ui';
+import { Palette } from '../../components/Palette.tsx';
+
 # Theming
 
 Composite UI is a design system first component library. This means all ui elements are intended to be controlled by the 
 theme you provide using the `ThemeProvider`. The includes everything from different component variants to overall ui spacing, typography, colors,
 and more. The theme format that Composite UI uses is based on the [System UI Theme Specification](https://system-ui.com/theme).
 
-## Building a theme
-
 To create your own theme object you simply need to follow the System UI structure. If you are using Typescript, then simply define your theme object 
 using the `ITheme` interface exported by `composite-ui`.
 
-## Composite UI theme
-
-Composite UI provides a default theme out of the box that you can start using right away or modify/customize in any way you see fit.
+Alternatively, Composite UI provides a default theme out of the box that you can start using right away or modify/customize in any way you see fit.
 Below is a reference for what the default theme includes.
 
-### Spacing
+## Colors
 
-The spacing...
+There are a lot of different ways to structure your theme's color scheme. Often times it is useful to have fields oriented 
+around usecase such as `text`, `background`, etc. so that you can easily reference the color you want like this:
 
-### Colors
+```jsx live="true"
+<Text color="text.secondary">
+  Hello world
+</Text>
+```
 
-The colors...
+For additional colors you can have extra keys for each kind of color in your application. In the Composite UI theme, we have kept
+things simple and use arrays for each set of colors. These can then be referenced in code with dot notation like `color="gray.3"`.
 
-### Typography
+A more complex color system will often prefer to have color palettes that have saturation levels for each color ranging from 10 to 900. 
+These colors are then referenced by their saturation level, such as `gray.20`, `gray.50` etc. The theme object shape makes no assumptions
+about how you will structure your color scheme. If you prefer to use saturation numbers, you can build a theme like this:
+
+```js
+const theme = {
+  // ...
+  colors: {
+    gray: {
+      // ...
+      40: '#F4F5F6',
+      // ...
+      300: '#D9DBDC'
+      // ...
+    }
+  }
+}
+```
+
+You can then reference these colors in code by saying `color="gray.40"`.
+
+### Text
+
+<Palette group="text"/>
+
+### Background
+
+<Palette group="background"/>
+
+
+## Spacing
+
+```js
+const theme = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  // ...
+}
+```
+
+## Typography
 
 The fonts...
 
-### Shadow
+## Shadow
 
 The shadow...
