@@ -31,7 +31,7 @@ const Code = ({ children, className, live }) => {
         theme={prismTheme}
         transformCode={code => `/** @jsx mdx */${code}`}
       >
-        <LivePreview />
+        <LivePreview style={{ fontFamily: theme.fonts.body }} />
         <LiveError />
         <LiveEditor
           style={editorStyles}

@@ -10,12 +10,17 @@ import {
   Tab
 } from 'composite-ui';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const componentTabs = [{ text: 'Box' }, { text: 'Flex' }, { text: 'Text' }];
+const componentTabs = [
+  { text: 'Box', href: '/docs/box' },
+  { text: 'Flex', href: '/docs/flex' },
+  { text: 'Text', href: '/docs/text' }
+];
 
 const Layout = ({ children }) => {
-  const [activeTab, setActiveTab] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const router = useRouter();
   const trigger = useRef(null);
 
   return (
@@ -47,28 +52,17 @@ const Layout = ({ children }) => {
           triggerRef={trigger}
           open={drawerOpen}
         >
-          <Tabs
-            vertical
-            activeTab={activeTab}
-            onTabChange={(_, id) => {
-              setActiveTab(id);
-            }}
-          >
+          <Tabs vertical>
             <Link href="/docs/getting-started">
               <Tab
                 variant="solid"
-                active={activeTab === 0}
-                onClick={() => setActiveTab(0)}
+                active={router.pathname === '/docs/getting-started'}
               >
                 Getting Started
               </Tab>
             </Link>
             <Link href="/docs/theming">
-              <Tab
-                variant="solid"
-                active={activeTab === 1}
-                onClick={() => setActiveTab(1)}
-              >
+              <Tab variant="solid" active={router.pathname === '/docs/theming'}>
                 Theming
               </Tab>
             </Link>
@@ -76,23 +70,17 @@ const Layout = ({ children }) => {
           <Heading level={3} color="#424242" mt={3} mb={1}>
             COMPONENTS
           </Heading>
-          <Tabs
-            vertical
-            activeTab={activeTab - 2}
-            variant="solid"
-            tabs={componentTabs}
-            onTabChange={(_, id) => {
-              setActiveTab(id + 2);
-            }}
-            renderTab={(tab, key) => (
-              <Link
-                href={`/docs/${componentTabs[key].text.toLowerCase()}`}
-                key={key}
-              >
-                {tab}
+          <Tabs vertical>
+            {componentTabs.map((tab, i) => (
+              <Link href={tab.href} key={i}>
+                <Tab
+                  variant="solid"
+                  text={tab.text}
+                  active={router.pathname === tab.href}
+                />
               </Link>
-            )}
-          ></Tabs>
+            ))}
+          </Tabs>
         </Drawer>
         <Drawer.Offset>
           <Box width="500px" pt="50px" pl={4} maxWidth="100%">
