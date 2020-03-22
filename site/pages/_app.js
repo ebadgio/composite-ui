@@ -1,8 +1,9 @@
 import React from 'react';
 import { GlobalStyles, ThemeProvider, baseTheme } from 'composite-ui';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { MDXProvider } from '@mdx-js/react';
 import DocsLayout from '../components/Layout';
+import MDX from '../components/MDX';
 
 const Main = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -16,16 +17,12 @@ const Main = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider theme={baseTheme}>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
       <GlobalStyles />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <MDXProvider components={MDX}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </MDXProvider>
     </ThemeProvider>
   );
 };
