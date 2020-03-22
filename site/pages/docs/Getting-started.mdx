@@ -1,1 +1,30 @@
 # Getting Started
+
+Install Composite UI.
+
+```sh
+npm install composite-ui
+```
+
+Add the Emotion peer dependencies if not already installed.
+
+```sh
+npm install @emotion/core @emotion/styled
+```
+
+Add the `ThemeProvider` component to the root of your application.
+
+```jsx
+import React from 'react';
+import { ThemeProvider, theme } from 'composite-ui';
+import App from './App.js';
+
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>,
+  document.getElementById('root')
+);
+```
+
+You can also build and provide your own custom theme. Learn how to build a custom theme in our section on [theming](./theming.mdx).
