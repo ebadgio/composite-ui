@@ -41,10 +41,6 @@ function App() {
   return <Button variant="primary">Click me</Button>;
 }
 
-export default props => (
-  <ThemeProvider theme={theme}>Hello world!</ThemeProvider>
-);
-
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <App />

@@ -114,6 +114,7 @@ export const baseTheme: ITheme = {
   },
   tabs: {
     basic: {
+      color: colors.text.light,
       '&:hover': {
         color: colors.black[0]
       },
@@ -122,6 +123,7 @@ export const baseTheme: ITheme = {
       }
     },
     outline: {
+      color: colors.text.light,
       '&:hover': {
         color: colors.black[0]
       },
@@ -140,6 +142,7 @@ export const baseTheme: ITheme = {
       }
     },
     solid: {
+      color: colors.text.light,
       padding: `8px 16px`,
       borderRadius: radii[1],
       '&:hover': {
