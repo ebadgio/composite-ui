@@ -83,9 +83,11 @@ const Layout = ({ children }) => {
           </Tabs>
         </Drawer>
         <Drawer.Offset>
-          <Box width="500px" pt="50px" pl={4} maxWidth="100%">
-            {children}
-          </Box>
+          <Flex width="100%" justifyContent="center">
+            <Box maxWidth="750px" pt="82px" px={4}>
+              {children}
+            </Box>
+          </Flex>
         </Drawer.Offset>
       </Flex>
     </>
