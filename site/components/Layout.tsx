@@ -67,7 +67,7 @@ const Layout = ({ children }) => {
               </Tab>
             </Link>
           </Tabs>
-          <Heading level={3} color="#424242" mt={3} mb={1}>
+          <Heading level={3} mt={3} mb={1}>
             COMPONENTS
           </Heading>
           <Tabs vertical>
