@@ -1,4 +1,4 @@
-import { Heading, Text } from 'composite-ui';
+import { Heading, Text, Box } from 'composite-ui';
 import Code from './Code';
 import Link from 'next/link';
 
@@ -27,11 +27,25 @@ const A = props => {
   );
 };
 
+/* Code */
+const InlineCode = props => (
+  <Box
+    bg="background.secondary"
+    px="6px"
+    width="fit-content"
+    display="inline"
+    borderRadius={1}
+  >
+    <code {...props} />
+  </Box>
+);
+
 export default {
   h1: H1,
   h2: H2,
   h3: H3,
   p: P,
   code: Code,
-  a: A
+  a: A,
+  inlineCode: InlineCode
 };

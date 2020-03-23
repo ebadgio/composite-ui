@@ -1,4 +1,4 @@
-import { Flex } from 'composite-ui';
+import { Flex, Box } from 'composite-ui';
 import { Palette } from '../../components/Palette.tsx';
 
 # Theming
@@ -15,11 +15,25 @@ Below is a reference for what the default theme includes.
 
 ## Colors
 
+The Composite UI color scheme is intentionally simple, consisting only of different shades of white, gray, and black. A color system is one of the most imporant 
+parts of defining and application or product, and Composite UI wants to make no assumptions about the application that uses it. 
+
+### Text
+
+<Palette group="text"/>
+
+### Background
+
+<Palette group="background"/>
+
+### Gray
+<Palette group="gray"/>
+
 There are a lot of different ways to structure your theme's color scheme. Often times it is useful to have fields oriented 
 around usecase such as `text`, `background`, etc. so that you can easily reference the color you want like this:
 
 ```jsx live="true"
-<Text color="text.secondary">
+<Text color="text.light">
   Hello world
 </Text>
 ```
@@ -48,14 +62,79 @@ const theme = {
 
 You can then reference these colors in code by saying `color="gray.40"`.
 
-### Text
+## Shadow
 
-<Palette group="text"/>
+<Flex flexWrap="wrap" width="100%">
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={0}
+    mr={3}
+    p="24px">
+    <Flex 
+      height="100%" 
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      0
+    </Flex>
+  </Box>
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={1}
+    mr={3}
+    p="24px">
+    <Flex 
+      height="100%"
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      1
+    </Flex>
+  </Box>
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={2}
+    p="24px">
+    <Flex 
+      height="100%" 
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      2
+    </Flex>
+  </Box>
+</Flex>
 
-### Background
+```js
+const theme = {
+  shadow: [
+    'none',
+    '0px 1px 5px rgba(0,0,0,0.12)',
+    '0px 3px 10px rgba(0,0,0,0.06)'
+  ];
+  // ...
+}
+```
 
-<Palette group="background"/>
+## Typography
 
+```js
+const theme = {
+  fonts: {
+    body: `-apple-system,BlinkMacSystemFont,
+    'Segoe UI','Oxygen','Ubuntu','Cantarell',
+    'Fira Sans','Droid Sans','Helvetica Neue',
+    sans-serif`,
+  },
+  fontSizes:[12, 14, 16, 20, 24, 32, 48, 64, 72]
+}
+```
 
 ## Spacing
 
@@ -65,11 +144,3 @@ const theme = {
   // ...
 }
 ```
-
-## Typography
-
-The fonts...
-
-## Shadow
-
-The shadow...
