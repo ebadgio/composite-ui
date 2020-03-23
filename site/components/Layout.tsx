@@ -6,22 +6,23 @@ import {
   Navbar,
   Flex,
   Box,
-  Button,
-  Tab
+  Tab,
+  useWindowMatch
 } from 'composite-ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const componentTabs = [
   { text: 'Box', href: '/docs/box' },
-  { text: 'Flex', href: '/docs/flex' },
-  { text: 'Text', href: '/docs/text' }
+  { text: 'Flex', href: '/docs/flex' }
 ];
 
 const Layout = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const router = useRouter();
   const trigger = useRef(null);
+
+  const matches = useWindowMatch('890px');
 
   return (
     <>
@@ -39,9 +40,13 @@ const Layout = ({ children }) => {
         }
         boxShadow={1}
       >
-        <Button ref={trigger} onClick={() => setDrawerOpen(!drawerOpen)}>
-          Menu
-        </Button>
+        <div
+          ref={trigger}
+          onClick={() => setDrawerOpen(!drawerOpen)}
+          style={!matches ? { display: 'none' } : { cursor: 'pointer' }}
+        >
+          <img src="/assets/menu-24px.svg" height="32px" />
+        </div>
       </Navbar>
       <Flex>
         <Drawer

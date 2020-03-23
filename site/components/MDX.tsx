@@ -1,4 +1,4 @@
-import { Heading, Text } from 'composite-ui';
+import { Heading, Text, Box } from 'composite-ui';
 import Code from './Code';
 import Link from 'next/link';
 
@@ -11,10 +11,33 @@ const H3 = props => <Heading level={3} {...props} />;
 const P = props => <Text {...props} />;
 
 /* Links */
-const A = props => (
-  <Link href={props.href}>
-    <a>{props.children}</a>
-  </Link>
+const A = props => {
+  const href = props.href as string;
+  if (href.startsWith('http')) {
+    return (
+      <a target="_blank" href={href}>
+        {props.children}
+      </a>
+    );
+  }
+  return (
+    <Link href={props.href}>
+      <a>{props.children}</a>
+    </Link>
+  );
+};
+
+/* Code */
+const InlineCode = props => (
+  <Box
+    bg="background.secondary"
+    px="6px"
+    width="fit-content"
+    display="inline"
+    borderRadius={1}
+  >
+    <code {...props} />
+  </Box>
 );
 
 export default {
@@ -23,5 +46,6 @@ export default {
   h3: H3,
   p: P,
   code: Code,
-  a: A
+  a: A,
+  inlineCode: InlineCode
 };

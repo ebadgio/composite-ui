@@ -20,6 +20,12 @@ const Code = ({ children, className, live }) => {
     borderRadius: '4px'
   };
 
+  const errorStyles = {
+    background: '#DF2935',
+    color: 'white',
+    padding: '20px'
+  };
+
   const code = children.trim();
 
   if (live) {
@@ -32,7 +38,7 @@ const Code = ({ children, className, live }) => {
         transformCode={code => `/** @jsx mdx */${code}`}
       >
         <LivePreview style={{ fontFamily: theme.fonts.body }} />
-        <LiveError />
+        <LiveError style={errorStyles} />
         <LiveEditor
           style={editorStyles}
           // @ts-ignore

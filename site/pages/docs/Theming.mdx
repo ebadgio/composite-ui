@@ -1,31 +1,146 @@
+import { Flex, Box } from 'composite-ui';
+import { Palette } from '../../components/Palette.tsx';
+
 # Theming
 
 Composite UI is a design system first component library. This means all ui elements are intended to be controlled by the 
 theme you provide using the `ThemeProvider`. The includes everything from different component variants to overall ui spacing, typography, colors,
 and more. The theme format that Composite UI uses is based on the [System UI Theme Specification](https://system-ui.com/theme).
 
-## Building a theme
-
 To create your own theme object you simply need to follow the System UI structure. If you are using Typescript, then simply define your theme object 
 using the `ITheme` interface exported by `composite-ui`.
 
-## Composite UI theme
-
-Composite UI provides a default theme out of the box that you can start using right away or modify/customize in any way you see fit.
+Alternatively, Composite UI provides a default theme out of the box that you can start using right away or modify/customize in any way you see fit.
 Below is a reference for what the default theme includes.
 
-### Spacing
+## Colors
 
-The spacing...
+The Composite UI color scheme is intentionally simple, consisting only of different shades of white, gray, and black. A color system is one of the most imporant 
+parts of defining and application or product, and Composite UI wants to make no assumptions about the application that uses it. 
 
-### Colors
+### Text
 
-The colors...
+<Palette group="text"/>
 
-### Typography
+### Background
 
-The fonts...
+<Palette group="background"/>
 
-### Shadow
+### Gray
+<Palette group="gray"/>
 
-The shadow...
+There are a lot of different ways to structure your theme's color scheme. Often times it is useful to have fields oriented 
+around usecase such as `text`, `background`, etc. so that you can easily reference the color you want like this:
+
+```jsx live="true"
+<Text color="text.light">
+  Hello world
+</Text>
+```
+
+For additional colors you can have extra keys for each kind of color in your application. In the Composite UI theme, we have kept
+things simple and use arrays for each set of colors. These can then be referenced in code with dot notation like `color="gray.3"`.
+
+A more complex color system will often prefer to have color palettes that have saturation levels for each color ranging from 10 to 900. 
+These colors are then referenced by their saturation level, such as `gray.20`, `gray.50` etc. The theme object shape makes no assumptions
+about how you will structure your color scheme. If you prefer to use saturation numbers, you can build a theme like this:
+
+```js
+const theme = {
+  // ...
+  colors: {
+    gray: {
+      // ...
+      40: '#F4F5F6',
+      // ...
+      300: '#D9DBDC'
+      // ...
+    }
+  }
+}
+```
+
+You can then reference these colors in code by saying `color="gray.40"`.
+
+## Shadow
+
+<Flex flexWrap="wrap" width="100%">
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={0}
+    mr={3}
+    p="24px">
+    <Flex 
+      height="100%" 
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      0
+    </Flex>
+  </Box>
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={1}
+    mr={3}
+    p="24px">
+    <Flex 
+      height="100%"
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      1
+    </Flex>
+  </Box>
+  <Box 
+    borderRadius={3} 
+    height="48px" 
+    width="48px" 
+    boxShadow={2}
+    p="24px">
+    <Flex 
+      height="100%" 
+      width="100%" 
+      alignItems="center" 
+      justifyContent="center">
+      2
+    </Flex>
+  </Box>
+</Flex>
+
+```js
+const theme = {
+  shadow: [
+    'none',
+    '0px 1px 5px rgba(0,0,0,0.12)',
+    '0px 3px 10px rgba(0,0,0,0.06)'
+  ];
+  // ...
+}
+```
+
+## Typography
+
+```js
+const theme = {
+  fonts: {
+    body: `-apple-system,BlinkMacSystemFont,
+    'Segoe UI','Oxygen','Ubuntu','Cantarell',
+    'Fira Sans','Droid Sans','Helvetica Neue',
+    sans-serif`,
+  },
+  fontSizes:[12, 14, 16, 20, 24, 32, 48, 64, 72]
+}
+```
+
+## Spacing
+
+```js
+const theme = {
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  // ...
+}
+```

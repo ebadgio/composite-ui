@@ -16,11 +16,11 @@ Add the `ThemeProvider` component to the root of your application.
 
 ```jsx
 import React from 'react';
-import { ThemeProvider, theme } from 'composite-ui';
+import { ThemeProvider, baseTheme } from 'composite-ui';
 import App from './App.js';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={baseTheme}>
     <App />
   </ThemeProvider>,
   document.getElementById('root')
