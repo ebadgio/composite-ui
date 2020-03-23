@@ -7,6 +7,7 @@ import {
   Flex,
   Box,
   Tab,
+  Button,
   useWindowMatch
 } from 'composite-ui';
 import Link from 'next/link';
@@ -30,23 +31,27 @@ const Layout = ({ children }) => {
         backgroundColor="#fff"
         title={
           <Link href="/">
-            <Flex alignItems="center">
-              <img src="/assets/icon.png" height="40px" />
-              <Heading level={2} ml={2}>
-                COMPOSITE UI
-              </Heading>
-            </Flex>
+            <Button variant="void">
+              <Flex alignItems="center">
+                <img src="/assets/icon.png" height="40px" />
+                <Heading level={2} ml={2} my={0}>
+                  COMPOSITE UI
+                </Heading>
+              </Flex>
+            </Button>
           </Link>
         }
         boxShadow={1}
       >
-        <div
+        <Button
+          variant="void"
           ref={trigger}
+          p="0"
           onClick={() => setDrawerOpen(!drawerOpen)}
           style={!matches ? { display: 'none' } : { cursor: 'pointer' }}
         >
           <img src="/assets/menu-24px.svg" height="32px" />
-        </div>
+        </Button>
       </Navbar>
       <Flex>
         <Drawer

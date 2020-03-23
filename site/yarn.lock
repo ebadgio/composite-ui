@@ -1963,9 +1963,9 @@ compose-function@3.0.3:
   dependencies:
     arity-n "^1.0.4"
 
-composite-ui@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/composite-ui/-/composite-ui-1.2.3.tgz#a0927dbbb09bc30592e80c7971f763a9ad98f5a8"
+composite-ui@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/composite-ui/-/composite-ui-1.2.4.tgz#b9f567d489f95786731fe49b993555b9afb0dd00"
   dependencies:
     "@styled-system/should-forward-prop" "^5.1.4"
     "@types/styled-system" "^5.1.9"
