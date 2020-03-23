@@ -32,13 +32,13 @@ const Main = ({ Component, pageProps }) => {
         <meta name="title" content="Composite UI" />
         <meta
           name="description"
-          content="A simple, intuitive, and design system first React component library."
+          content="A modular, intuitive, and design system first React component library."
         />
         <meta property="og:url" content="https://composite-ui.com" />
         <meta property="og:title" content="Composite UI" />
         <meta
           property="og:description"
-          content="A simple, intuitive, and design system first React component library."
+          content="A modular, intuitive, and design system first React component library."
         />
         <meta
           property="og:image"
