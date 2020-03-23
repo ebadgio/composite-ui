@@ -18,4 +18,4 @@ export { useTheme } from './hooks/useTheme';
 export { useWindowMatch } from './hooks/useWindowMatch';
 
 // Configs
-export { baseTheme } from './config/theme';
+export { baseTheme, ITheme } from './config/theme';

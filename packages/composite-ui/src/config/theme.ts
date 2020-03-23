@@ -40,7 +40,7 @@ export const spaceDefaults = [0, 4, 8, 16, 32, 64, 128, 256, 512];
 export const shadowDefaults = [
   'none',
   '0px 1px 5px rgba(0,0,0,0.12)',
-  '0px 3px 10px rgba(0, 0, 0, 0.06)'
+  '0px 3px 15px rgba(0,0,0,0.12)'
 ];
 
 export const radii = [0, 6, 28, '50%'];
@@ -79,6 +79,15 @@ export const baseTheme: ITheme = {
   radii: radii,
   zIndices: zIndices,
   buttons: {
+    void: {
+      background: 'none'
+    },
+    basic: {
+      background: 'none',
+      '&:hover': {
+        backgroundColor: colors.background.secondary
+      }
+    },
     primary: {
       backgroundColor: colors.black[1],
       color: '#fff',

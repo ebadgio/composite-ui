@@ -34,14 +34,14 @@ yarn add @emotion/core @emotion/styled
 
 ```jsx
 import React from 'react';
-import { ThemeProvider, theme, Button } from 'composite-ui'; // ... or import a custom theme
+import { ThemeProvider, baseTheme, Button } from 'composite-ui'; // ... or use a custom theme
 
 function App() {
   return <Button variant="primary">Click me</Button>;
 }
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={baseTheme}>
     <App />
   </ThemeProvider>,
   document.getElementById('root')
