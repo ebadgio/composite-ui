@@ -1,0 +1,49 @@
+# Button
+
+Buttons are triggers for user actions. The `Button` component supports a variant design pattern whereby you can
+draft different button variants entirely from your theme object. 
+
+Buttons also implement the `space`, `layout`, `color`, `border`, `fontSize`, and `fontWeight` style functions.
+
+## Usage
+
+```js
+import { Button } from 'composite-ui';
+```
+
+## Variants
+
+Composite UI includes some default Button variants that you can use right away.
+
+```jsx live=true
+<Flex>
+  <Button variant="primary" mr={3}>Click me</Button>
+  <Button variant="outline.primary" mr={3}>Click me</Button>
+  <Button variant="basic" mr={3}>Click me</Button>
+  <Button variant="void">Click me</Button>
+</Flex>
+```
+
+Button varaints are defined in the `theme.buttons` object. You can define your own button variants by creating a theme object and filling out the `buttons` object:
+
+```jsx
+// theme.ts
+export default {
+  // ... other theme objects
+  buttons: {
+    primary: {
+      backgroundColor: colors.buttons.primary
+      '&:hover': {
+        backgroundColor: colors.buttons.primaryLighter
+      }
+    },
+    secondary: {
+      backgroundColor: colors.buttons.secondary
+      '&:hover': {
+        backgroundColor: colors.buttons.secondaryLighter
+      }
+    },
+    // ... more button variants
+  },
+}
+```

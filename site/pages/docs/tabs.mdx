@@ -1,0 +1,142 @@
+# Tabs
+
+Tabs allow users to navigate different views and pages in your application.
+
+The `Tabs` component will always render a group or list of `Tab` components. Each `Tab` component is a styled `div` element
+that accepts variant configuration from the `theme.tabs` object. 
+
+### Extended variant
+Variants added under `theme.tabs` can also include extended variants for creating `activeStyles`. This means 
+a tabs variant can have a nested object with styles that will be applied when a given tab has prop `active=true`.
+
+```js
+// theme.ts
+export default {
+  tabs: {
+    outline: {
+      color: colors.text.light,
+      '&:hover': {
+        color: colors.black[0]
+      },
+      activeStyles: { // These styles will only be applied when the tab is active
+        color: colors.black[0],
+        '&::after': {
+          bottom: 0,
+          right: 0,
+          left: 0,
+          position: 'absolute',
+          content: '""',
+          height: '2px',
+          width: '100%',
+          backgroundColor: colors.black[0]
+        }
+      }
+    }
+  }
+} as ITheme
+```
+
+## Usage
+
+```js
+import { Tabs, Tab } from 'composite-ui';
+```
+
+## Variants
+
+`Tabs` can be created by simple passing an array of `ITab` objects to the `tabs` prop.
+
+```jsx live=true
+function Basic() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const tabs = [
+    {
+      text: 'Tab 1',
+    }, {
+      text: 'Tab 2'
+    },
+    {
+      text: 'Tab 3'
+    }
+  ];
+  return (
+    <Box width="100%" borderRadius={1} boxShadow={1}>
+      <Tabs
+        activeTab={activeTab}
+        variant="basic"
+        tabs={tabs}
+        onTabChange={(_, id) => {
+          setActiveTab(id)
+        }}
+      />
+    </Box>
+  )
+}
+```
+
+`Tabs` can also be passed individual `Tab` components as children.
+
+```jsx live=true
+function Outline() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  return (
+    <Box width="100%" borderRadius={1} boxShadow={1}>
+      <Tabs
+        activeTab={activeTab}
+        onTabChange={(_, id) => {
+          setActiveTab(id)
+        }}>
+        <Tab 
+          active={activeTab === 0} 
+          variant="outline" 
+          onClick={() => setActiveTab(0)}>
+          Tab 1
+        </Tab>
+        <Tab 
+          active={activeTab === 1} 
+          variant="outline" 
+          onClick={() => setActiveTab(1)}>
+          Tab 2
+        </Tab>
+        <Tab 
+          active={activeTab === 2} 
+          variant="outline" 
+          onClick={() => setActiveTab(2)}>
+          Tab 3
+        </Tab>
+      </Tabs>
+    </Box>
+  )
+}
+```
+
+`Tabs` can also be designed with the intention of being vertical, such as the `solid` tab.
+
+```jsx live=true
+function Solid() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const tabs = [
+    {
+      text: 'Tab 1',
+    }, {
+      text: 'Tab 2'
+    },
+    {
+      text: 'Tab 3'
+    }
+  ];
+  return (
+    <Box width="200px" borderRadius={1} boxShadow={1} p={3}>
+      <Tabs
+        vertical
+        activeTab={activeTab}
+        variant="solid"
+        tabs={tabs}
+        onTabChange={(_, id) => {
+          setActiveTab(id)
+        }}
+      />
+    </Box>
+  )
+}
+```

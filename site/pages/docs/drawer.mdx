@@ -1,0 +1,51 @@
+# Drawer
+
+Drawers are useful building interactive and mobile friendly menus for your application. Drawers typically 
+contain groups of tabs that allow users to navigate to the various pages available to them.
+
+## Usage
+
+```js
+import { Drawer } from 'composite-ui';
+```
+
+## Examples
+
+```jsx live=true
+function Demo() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState(0);
+  const tabs = [
+    {
+      text: 'Tab 1',
+    }, {
+      text: 'Tab 2'
+    },
+    {
+      text: 'Tab 3'
+    }
+  ];
+  return (
+    <Box height="300px">
+      <Drawer 
+        open={isOpen}>
+        <Heading>
+          Menu
+        </Heading>
+        <Tabs 
+          vertical
+          activeTab={activeTab}
+          variant="solid"
+          tabs={tabs}
+          onTabChange={(_, id) => {
+            setActiveTab(id)
+          }}
+        />
+      </Drawer>
+      <Button onClick={() => {setIsOpen(true)}}>
+        Open drawer
+      </Button>
+    </Box>
+  )
+}
+```

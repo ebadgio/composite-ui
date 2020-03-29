@@ -19,7 +19,12 @@ const Code = ({ children, className, live }) => {
     marginBottom: '32px',
     borderRadius: '4px'
   };
-
+  const previewStyles = {
+    fontFamily: theme.fonts.body,
+    border: `1px solid ${theme.colors.gray[2]}`,
+    padding: 16,
+    borderRadius: '4px'
+  };
   const errorStyles = {
     background: '#DF2935',
     color: 'white',
@@ -37,7 +42,7 @@ const Code = ({ children, className, live }) => {
         theme={prismTheme}
         transformCode={code => `/** @jsx mdx */${code}`}
       >
-        <LivePreview style={{ fontFamily: theme.fonts.body }} />
+        <LivePreview style={previewStyles} />
         <LiveError style={errorStyles} />
         <LiveEditor
           style={editorStyles}
