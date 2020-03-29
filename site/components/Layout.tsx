@@ -38,10 +38,10 @@ const Layout = ({ children }) => {
         backgroundColor="#fff"
         title={
           <Link href="/">
-            <Button variant="void">
+            <Button variant="void" height="fit-content">
               <Flex alignItems="center">
                 <img src="/assets/icon.png" height="40px" />
-                <Heading level={2} ml={2} my={0}>
+                <Heading level={2} ml={1} my={0}>
                   COMPOSITE UI
                 </Heading>
               </Flex>
@@ -99,9 +99,9 @@ const Layout = ({ children }) => {
             ))}
           </Tabs>
         </Drawer>
-        <Drawer.Offset>
+        <Drawer.Offset style={{ maxWidth: '100%' }}>
           <Flex width="100%" justifyContent="center">
-            <Box maxWidth="750px" pt="82px" px={4}>
+            <Box width="750px" pt="82px" px={4} maxWidth="100%">
               {children}
             </Box>
           </Flex>

@@ -17,13 +17,15 @@ const Code = ({ children, className, live }) => {
     background: theme.colors.background.secondary,
     marginTop: '16px',
     marginBottom: '32px',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    overflowX: 'auto' as 'auto'
   };
   const previewStyles = {
     fontFamily: theme.fonts.body,
     border: `1px solid ${theme.colors.gray[2]}`,
     padding: 16,
-    borderRadius: '4px'
+    borderRadius: '4px',
+    overflowX: 'auto' as 'auto'
   };
   const errorStyles = {
     background: '#DF2935',
@@ -55,7 +57,8 @@ const Code = ({ children, className, live }) => {
   const preStyles = {
     background: theme.colors.background.secondary,
     padding: '16px',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    overflowX: 'auto' as 'auto'
   };
   return (
     <Highlight
