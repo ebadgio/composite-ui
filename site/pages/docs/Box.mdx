@@ -1,6 +1,9 @@
 # Box
 
-The Box component is an abstract component that can be used to easily build ui layouts or as a primitive for building more complex and specific ui elements.
+Box component is an abstract `div` component that can be used to easily build ui layouts or as a primitive for building more complex and specific ui elements.
+
+Box uses the following style functions from the Styled System API: `space`, `layout`, `color`, `border`, and `boxShadow`. These utilities allow Box to 
+accept a range of responsive style props such as margin, padding, height, width, color, etc. For a full reference check out the [Styled System API](https://styled-system.com/api).
 
 ## Usage
 
@@ -25,8 +28,7 @@ import { Box } from 'composite-ui';
 <Box 
   width="100%" 
   boxShadow={1} 
-  p={3} 
-  mb={3} 
+  p={3}
   borderRadius={1}>
   This Box has shadow
 </Box>

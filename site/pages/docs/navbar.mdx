@@ -1,0 +1,29 @@
+# Navbar
+
+Navigation bars are used to create a persistent navigation experience across different pages of your application. The `Navbar` component
+uses `borderBottom`, `boxShadow`, `color`, `height`, and `zIndex` style functions for flexible, theme based styling.
+
+## Usage
+
+```js
+import { Navbar } from 'composite-ui';
+```
+
+## Examples
+
+```jsx live=true
+function Layout() {
+  
+  return (
+    <Box style={{position: 'relative'}} width="100%">
+      <Navbar
+        backgroundColor="#fff"
+        title={<Heading level={2} ml={2} my={0}>
+          My App
+        </Heading>}
+        boxShadow={1}
+      />
+    </Box>
+  )
+}
+```
