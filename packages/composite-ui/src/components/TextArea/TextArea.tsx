@@ -15,7 +15,7 @@ import * as React from 'react';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import { inputStyles, VariantStyleProps } from '../../config/variants';
 
-export interface ITextAreaProps
+export interface ITextareaProps
   extends Merge<ColorProps, React.HTMLAttributes<HTMLTextAreaElement>>,
     BorderProps,
     SpaceProps,
@@ -25,8 +25,8 @@ export interface ITextAreaProps
   width?: number | string; // needed in order to avoid typescript/react error for html input elem types
 }
 
-export const TextArea = styled('textarea', { shouldForwardProp })<
-  ITextAreaProps
+export const Textarea = styled('textarea', { shouldForwardProp })<
+  ITextareaProps
 >`
   box-sizing: border-box;
   &:focus {
@@ -41,7 +41,7 @@ export const TextArea = styled('textarea', { shouldForwardProp })<
   ${inputStyles}
 `;
 
-TextArea.defaultProps = {
+Textarea.defaultProps = {
   width: '100%',
   height: '100px',
   padding: '8px',

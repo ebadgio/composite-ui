@@ -4,6 +4,8 @@ import {
   color,
   border,
   boxShadow,
+  position,
+  PositionProps,
   SpaceProps,
   LayoutProps,
   ColorProps,
@@ -12,7 +14,6 @@ import {
   BackgroundColorProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import * as React from 'react';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 
 export interface IBoxProps
@@ -21,7 +22,8 @@ export interface IBoxProps
     LayoutProps,
     BorderProps,
     BoxShadowProps,
-    BackgroundColorProps {}
+    BackgroundColorProps,
+    PositionProps {}
 
 export const Box = styled('div', { shouldForwardProp })<IBoxProps>`
   box-sizing: border-box;
@@ -30,4 +32,5 @@ export const Box = styled('div', { shouldForwardProp })<IBoxProps>`
   ${color}
   ${border}
   ${boxShadow}
+  ${position}
 `;

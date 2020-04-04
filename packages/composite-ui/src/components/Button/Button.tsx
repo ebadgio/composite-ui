@@ -48,6 +48,7 @@ Button.defaultProps = {
   borderRadius: 1,
   fontWeight: 'bold',
   height: '35px',
-  padding: '0 16px',
+  py: 0,
+  px: 3,
   variant: 'primary'
 };

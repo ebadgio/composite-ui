@@ -19,7 +19,6 @@ import {
   BorderLeftProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import { spaceDefaults } from '../../config/theme';
 import { transform } from '../../config/system';
 import {
   createShouldForwardProp,
@@ -55,8 +54,8 @@ export const Wrapper = styled('div', { shouldForwardProp })`
 Wrapper.defaultProps = {
   zIndex: 2,
   backgroundColor: '#fff',
-  pt: 50 + spaceDefaults[2],
-  px: spaceDefaults[3],
+  pt: '58px',
+  px: 3,
   width: '250px'
 };
 

@@ -4,7 +4,7 @@ export { Text, ITextProps } from './components/Text';
 export { Flex, IFlexProps } from './components/Flex';
 export { Button, IButtonProps } from './components/Button';
 export { Input, IInputProps } from './components/Input';
-export { TextArea, ITextAreaProps } from './components/TextArea';
+export { Textarea, ITextareaProps } from './components/TextArea';
 export { Navbar, INavbarProps } from './components/Navbar';
 export { Tabs, ITabsProps } from './components/Tabs';
 export { Tab, ITabProps } from './components/Tab';
