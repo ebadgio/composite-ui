@@ -22,7 +22,7 @@ const componentTabs = [
   { text: 'Input', href: '/docs/input' },
   { text: 'Tabs', href: '/docs/tabs' },
   { text: 'Text', href: '/docs/text' },
-  { text: 'TextArea', href: '/docs/textarea' }
+  { text: 'Textarea', href: '/docs/textarea' }
 ];
 
 const Layout = ({ children }) => {
