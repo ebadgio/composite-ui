@@ -1,5 +1,5 @@
 <img
-  src="https://github.com/ebadgio/composite-ui/blob/master/site/public/assets/icon.png?raw=true"
+  src="https://s3.amazonaws.com/composite-ui.com/icon.png"
   width="100"
   heigh="100"
 />
