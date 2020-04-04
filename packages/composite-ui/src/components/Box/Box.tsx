@@ -4,6 +4,8 @@ import {
   color,
   border,
   boxShadow,
+  position,
+  PositionProps,
   SpaceProps,
   LayoutProps,
   ColorProps,
@@ -21,7 +23,10 @@ export interface IBoxProps
     LayoutProps,
     BorderProps,
     BoxShadowProps,
-    BackgroundColorProps {}
+    BackgroundColorProps,
+    PositionProps {
+  as?: string | React.ReactNode;
+}
 
 export const Box = styled('div', { shouldForwardProp })<IBoxProps>`
   box-sizing: border-box;
@@ -30,4 +35,5 @@ export const Box = styled('div', { shouldForwardProp })<IBoxProps>`
   ${color}
   ${border}
   ${boxShadow}
+  ${position}
 `;
