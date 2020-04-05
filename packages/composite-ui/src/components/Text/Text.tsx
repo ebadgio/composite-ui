@@ -24,5 +24,5 @@ Text.defaultProps = {
   fontSize: '16px',
   lineHeight: '1.5em',
   color: 'text.primary',
-  marginBottom: 2
+  marginBottom: '0.75rem'
 };
