@@ -97,6 +97,7 @@ export const baseTheme: ITheme = {
     },
     outline: {
       primary: {
+        background: 'none',
         color: colors.black[1],
         border: `1px solid ${colors.black[1]}`,
         '&:hover': {

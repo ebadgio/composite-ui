@@ -8,7 +8,6 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
-import * as React from 'react';
 
 export interface ITextProps
   extends Merge<ColorProps, React.HTMLAttributes<HTMLParagraphElement>>,

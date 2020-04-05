@@ -14,7 +14,6 @@ import {
   BackgroundColorProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import * as React from 'react';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 
 export interface IBoxProps
