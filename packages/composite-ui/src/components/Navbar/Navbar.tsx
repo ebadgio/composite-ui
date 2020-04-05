@@ -5,6 +5,12 @@ import {
   height,
   boxShadow,
   zIndex,
+  position,
+  padding,
+  flexbox,
+  FlexboxProps,
+  PaddingProps,
+  PositionProps,
   HeightProps,
   BoxShadowProps,
   ColorProps,
@@ -14,37 +20,34 @@ import {
 import styled from '@emotion/styled';
 import shouldForwardProp from '@styled-system/should-forward-prop';
 import { Tabs } from '../Tabs';
-import { Flex } from '../Flex';
 import { Box } from '../Box';
 import { ITabProps } from '../Tab';
 import { Heading } from '../Heading';
 
 const Wrapper = styled('div', { shouldForwardProp })`
   width: 100%;
-  position: fixed;
   top: 0;
   display: flex;
-  justify-content: center;
   left: 0;
   ${color}
   ${boxShadow}
   ${borderBottom}
   ${height}
   ${zIndex}
+  ${position}
+  ${padding}
+  ${flexbox}
 `;
-
-Wrapper.defaultProps = {
-  bg: '#fff',
-  height: '50px',
-  zIndex: 3
-};
 
 interface IWrapperProps
   extends ColorProps,
     BorderBottomProps,
     BoxShadowProps,
     HeightProps,
-    ZIndexProps {}
+    ZIndexProps,
+    PositionProps,
+    PaddingProps,
+    FlexboxProps {}
 
 export interface INavbarProps extends IWrapperProps {
   title?: string | React.ReactNode;
@@ -55,16 +58,7 @@ export interface INavbarProps extends IWrapperProps {
 
 export const Navbar = React.forwardRef(
   (props: INavbarProps, ref: React.RefObject<HTMLDivElement>) => {
-    const wrapperProps: IWrapperProps = {
-      bg: props.bg,
-      backgroundColor: props.backgroundColor,
-      color: props.color,
-      boxShadow: props.boxShadow,
-      height: props.height,
-      borderBottom: props.borderBottom,
-      zIndex: props.zIndex,
-      opacity: props.opacity
-    };
+    const wrapperProps: IWrapperProps = { ...props };
 
     const renderTitle = (): React.ReactNode => {
       if (typeof props.title === 'string') {
@@ -74,19 +68,20 @@ export const Navbar = React.forwardRef(
     };
     return (
       <Wrapper {...wrapperProps} ref={ref}>
-        <Flex
-          maxWidth="1400px"
-          height="100%"
-          p="0 20px"
-          justifyContent="space-between"
-          alignItems="center"
-          width="100%"
-        >
-          {props.title && <Box>{renderTitle()}</Box>}
-          {props.children}
-          {props.tabs && <Tabs tabs={props.tabs} />}
-        </Flex>
+        {props.title && <Box>{renderTitle()}</Box>}
+        {props.children}
+        {props.tabs && <Tabs tabs={props.tabs} />}
       </Wrapper>
     );
   }
 );
+
+Navbar.defaultProps = {
+  bg: '#fff',
+  height: '50px',
+  zIndex: 3,
+  position: 'fixed',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0 20px'
+};
