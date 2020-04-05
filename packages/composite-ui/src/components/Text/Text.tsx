@@ -23,5 +23,6 @@ export const Text = styled('p', { shouldForwardProp })<ITextProps>`
 Text.defaultProps = {
   fontSize: '16px',
   lineHeight: '1.5em',
-  color: 'text.primary'
+  color: 'text.primary',
+  marginBottom: 2
 };
