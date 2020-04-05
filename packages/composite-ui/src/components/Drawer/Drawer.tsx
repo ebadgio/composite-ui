@@ -11,6 +11,8 @@ import {
   left,
   flexShrink,
   opacity,
+  layout,
+  LayoutProps,
   WidthProps,
   BackgroundColorProps,
   PaddingProps,
@@ -66,6 +68,8 @@ export const Overlay = styled('div', { shouldForwardProp })`
   height: 100vh;
   width: 100vw;
   background: #000;
+  top: 0;
+  left: 0;
   ${opacity}
   ${zIndex}
 `;
@@ -75,9 +79,12 @@ Overlay.defaultProps = {
   opacity: 0.1
 };
 
+export interface IDrawerOffsetProps extends LayoutProps {}
+
 export const Offset = styled.div`
   display: flex;
   flex-grow: 1;
+  ${layout}
 `;
 
 export interface IDrawerProps
