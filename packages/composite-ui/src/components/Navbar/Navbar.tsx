@@ -18,11 +18,16 @@ import {
   ZIndexProps
 } from 'styled-system';
 import styled from '@emotion/styled';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import {
+  createShouldForwardProp,
+  props
+} from '@styled-system/should-forward-prop';
 import { Tabs } from '../Tabs';
 import { Box } from '../Box';
 import { ITabProps } from '../Tab';
 import { Heading } from '../Heading';
+
+const shouldForwardProp = createShouldForwardProp([...props, 'title']);
 
 const Wrapper = styled('div', { shouldForwardProp })`
   width: 100%;

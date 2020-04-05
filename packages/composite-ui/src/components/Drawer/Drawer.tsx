@@ -32,7 +32,7 @@ import { Flex } from '../Flex';
 import { useWindowMatch } from '../../hooks/useWindowMatch';
 import { useTheme } from '../../hooks/useTheme';
 
-export const shouldForwardProp = createShouldForwardProp([...props, 'open']);
+const shouldForwardProp = createShouldForwardProp([...props, 'open']);
 
 export const Wrapper = styled('div', { shouldForwardProp })`
   position: fixed;
