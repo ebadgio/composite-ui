@@ -24,4 +24,44 @@ describe('Box', () => {
         .text()
     ).toEqual('Hello');
   });
+
+  it('should render an anchor element', () => {
+    const wrapper = mount(<Box as="a">Hello</Box>);
+    expect(
+      wrapper
+        .find('a')
+        .first()
+        .hasClass(/(css-).+/)
+    ).toEqual(true);
+    expect(
+      wrapper
+        .find('a')
+        .first()
+        .text()
+    ).toEqual('Hello');
+  });
+
+  it('should render a custom component', () => {
+    const SomeComponent = props => (
+      <div {...props}>
+        <p>Hello</p>
+      </div>
+    );
+
+    const wrapper = mount(
+      <Box width="200px" height="40px" as={SomeComponent} />
+    );
+    expect(
+      wrapper
+        .find(SomeComponent)
+        .first()
+        .hasClass(/(css-).+/)
+    ).toEqual(true);
+    expect(
+      wrapper
+        .find('p')
+        .first()
+        .text()
+    ).toEqual('Hello');
+  });
 });
