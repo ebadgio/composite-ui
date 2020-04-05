@@ -11,10 +11,14 @@ import { Drawer } from 'composite-ui';
 
 ## Examples
 
+
+### Basic
+
 ```jsx live=true
-function Demo() {
+function Basic() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState(0);
+  const trigger = React.useRef(null);
   const tabs = [
     {
       text: 'Tab 1',
@@ -25,9 +29,11 @@ function Demo() {
       text: 'Tab 3'
     }
   ];
+
   return (
-    <Box height="300px">
-      <Drawer 
+    <Box>
+      <Drawer
+        triggerRef={trigger}
         open={isOpen}>
         <Heading>
           Menu
@@ -42,7 +48,84 @@ function Demo() {
           }}
         />
       </Drawer>
-      <Button onClick={() => {setIsOpen(true)}}>
+      <Button onClick={() => {setIsOpen(!isOpen)}} ref={trigger}>
+        Open drawer
+      </Button>
+    </Box>
+  )
+}
+```
+
+### Placement on right
+
+```jsx live=true
+function Right() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [activeTab, setActiveTab] = React.useState(0);
+  const trigger = React.useRef(null);
+  const tabs = [
+    {
+      text: 'Tab 1',
+    }, {
+      text: 'Tab 2'
+    },
+    {
+      text: 'Tab 3'
+    }
+  ];
+
+  return (
+    <Box>
+      <Drawer
+        placement="right"
+        triggerRef={trigger}
+        open={isOpen}>
+        <Heading>
+          Menu
+        </Heading>
+        <Tabs 
+          vertical
+          activeTab={activeTab}
+          variant="solid"
+          tabs={tabs}
+          onTabChange={(_, id) => {
+            setActiveTab(id)
+          }}
+        />
+      </Drawer>
+      <Button onClick={() => {setIsOpen(!isOpen)}} ref={trigger}>
+        Open drawer
+      </Button>
+    </Box>
+  )
+}
+```
+
+### Responsive Drawer
+
+Drawers also accept a `responsive` flag, which if true, will cause the drawer to behave like a sidebar component
+and have a fixed position on the page when the screen is large enough. On smaller screens it will automatically hide and be controlled by the trigger
+like a normal drawer.
+
+The default hide width is the breakpoint at index 1 in the theme object. However, this can be overriden by passing values for either the
+`shouldHideAtWidth` or `shouldHideAtIndex` props.
+
+```jsx
+function Sidebar() {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const trigger = React.useRef(null);
+
+  return (
+    <Box>
+      <Drawer
+        responsive
+        triggerRef={trigger}
+        open={isOpen}>
+        <Heading>
+          Sidebar menu
+        </Heading>
+      </Drawer>
+      <Button onClick={() => {setIsOpen(!isOpen)}} ref={trigger}>
         Open drawer
       </Button>
     </Box>

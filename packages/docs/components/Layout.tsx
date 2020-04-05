@@ -8,7 +8,6 @@ import {
   Box,
   Tab,
   Button,
-  useTheme,
   useWindowMatch
 } from 'composite-ui';
 import Link from 'next/link';
@@ -17,9 +16,11 @@ import { useRouter } from 'next/router';
 const componentTabs = [
   { text: 'Box', href: '/docs/box' },
   { text: 'Button', href: '/docs/button' },
+  { text: 'Drawer', href: '/docs/drawer' },
   { text: 'Flex', href: '/docs/flex' },
   { text: 'Heading', href: '/docs/heading' },
   { text: 'Input', href: '/docs/input' },
+  { text: 'Navbar', href: '/docs/navbar' },
   { text: 'Tabs', href: '/docs/tabs' },
   { text: 'Text', href: '/docs/text' },
   { text: 'Textarea', href: '/docs/textarea' }
@@ -29,7 +30,6 @@ const Layout = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const router = useRouter();
   const trigger = useRef(null);
-  const theme = useTheme();
   const matches = useWindowMatch('890px');
 
   return (
@@ -54,7 +54,9 @@ const Layout = ({ children }) => {
           variant="void"
           ref={trigger}
           p="0"
-          onClick={() => setDrawerOpen(!drawerOpen)}
+          onClick={() => {
+            setDrawerOpen(!drawerOpen);
+          }}
           style={!matches ? { display: 'none' } : { cursor: 'pointer' }}
         >
           <img src="/assets/menu-24px.svg" height="32px" />
@@ -62,7 +64,6 @@ const Layout = ({ children }) => {
       </Navbar>
       <Flex>
         <Drawer
-          borderRight={`1px solid ${theme.colors.gray[2]}`}
           pt="82px"
           responsive
           shouldHideAtWidth="890px"

@@ -11,18 +11,46 @@ import { Navbar } from 'composite-ui';
 
 ## Examples
 
+
+### Simple Navbar
+
 ```jsx live=true
 function Layout() {
   
   return (
-    <Box style={{position: 'relative'}} width="100%">
+    <Box position="relative" width="100%">
       <Navbar
+        position="static" // (just for demo)
         backgroundColor="#fff"
-        title={<Heading level={2} ml={2} my={0}>
-          My App
-        </Heading>}
+        title="App"
         boxShadow={1}
       />
+    </Box>
+  )
+}
+```
+
+### Navbar with Tabs
+
+```jsx live=true
+function Layout() {
+  const [activeTab, setActiveTab] = React.useState(0);
+  const tabs = [{text: 'Home'}, {text: 'About'}]
+
+  return (
+    <Box position="relative" width="100%">
+      <Navbar
+        position="static"
+        backgroundColor="#fff"
+        title="App"
+        boxShadow={1}>
+      <Tabs 
+        onTabChange={(_, id) => {setActiveTab(id)}} 
+        variant="basic"
+        activeTab={activeTab}
+        tabs={tabs}
+      />
+      </Navbar>
     </Box>
   )
 }
