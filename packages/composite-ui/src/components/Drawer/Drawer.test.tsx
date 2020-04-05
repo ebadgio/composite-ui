@@ -5,7 +5,7 @@ import { baseTheme } from '../../config/theme';
 import { Drawer, Wrapper, Offset, Overlay } from './Drawer';
 import { Heading } from '../Heading';
 
-describe('Navbar', () => {
+describe('Drawer', () => {
   let wrapper: ReactWrapper;
   let heading: string;
   let heading2: string;
@@ -75,7 +75,7 @@ describe('Navbar', () => {
 
     wrapper = mount(
       <ThemeProvider theme={baseTheme}>
-        <Drawer overlayOpacity={0.75} open={true}>
+        <Drawer overlay={{ opacity: 0.75 }} open={true}>
           <Heading>{heading}</Heading>
         </Drawer>
       </ThemeProvider>

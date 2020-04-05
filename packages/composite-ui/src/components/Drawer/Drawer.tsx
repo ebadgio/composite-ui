@@ -18,7 +18,8 @@ import {
   PaddingProps,
   ZIndexProps,
   BorderRightProps,
-  BorderLeftProps
+  BorderLeftProps,
+  OpacityProps
 } from 'styled-system';
 import styled from '@emotion/styled';
 import { spaceDefaults } from '../../config/theme';
@@ -54,13 +55,7 @@ export const Wrapper = styled('div', { shouldForwardProp })`
   ${flexShrink}
 `;
 
-Wrapper.defaultProps = {
-  zIndex: 2,
-  backgroundColor: '#fff',
-  pt: 50 + spaceDefaults[2],
-  px: spaceDefaults[3],
-  width: '250px'
-};
+export interface IOverlayProps extends OpacityProps, ZIndexProps {}
 
 export const Overlay = styled('div', { shouldForwardProp })`
   position: fixed;
@@ -101,7 +96,7 @@ export interface IDrawerProps
   triggerRef?: React.RefObject<HTMLElement>;
   shouldHideAtIndex?: number;
   shouldHideAtWidth?: string;
-  overlayOpacity?: number;
+  overlay?: IOverlayProps;
 }
 
 const placementTransforms = {
@@ -112,7 +107,7 @@ const placementTransforms = {
 const Menu = React.forwardRef(
   (props: IDrawerProps, ref: React.RefObject<HTMLDivElement>) => {
     const handleChange = (match: boolean) => {
-      if (props.triggerRef) {
+      if (props.responsive && props.triggerRef) {
         /*
         There are two cases where we want to click the trigger to change the parent's drawer state:
         1. If the drawer is open and we are now below responsive threshold then close the drawer
@@ -173,13 +168,19 @@ const Menu = React.forwardRef(
     return (
       <>
         {wrapper}
-        {props.open && (
-          <Overlay onClick={triggerClose} opacity={props.overlayOpacity} />
-        )}
+        {props.open && <Overlay onClick={triggerClose} {...props.overlay} />}
       </>
     );
   }
 );
+
+Menu.defaultProps = {
+  zIndex: 2,
+  backgroundColor: '#fff',
+  pt: 50 + spaceDefaults[2],
+  px: spaceDefaults[3],
+  width: '250px'
+};
 
 export class Drawer extends React.PureComponent<IDrawerProps, {}> {
   public static Offset = Offset;
