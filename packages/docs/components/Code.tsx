@@ -58,7 +58,9 @@ const Code = ({ children, className, live }) => {
     background: theme.colors.background.secondary,
     padding: '16px',
     borderRadius: '4px',
-    overflowX: 'auto' as 'auto'
+    overflowX: 'auto' as 'auto',
+    marginTop: '16px',
+    marginBottom: '32px'
   };
   return (
     <Highlight

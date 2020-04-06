@@ -7,8 +7,7 @@ import {
   Flex,
   Box,
   Tab,
-  Button,
-  useWindowMatch
+  Button
 } from 'composite-ui';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -30,7 +29,6 @@ const Layout = ({ children }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const router = useRouter();
   const trigger = useRef(null);
-  const matches = useWindowMatch('890px');
 
   return (
     <>
@@ -41,7 +39,7 @@ const Layout = ({ children }) => {
             <Button variant="void" height="fit-content">
               <Flex alignItems="center">
                 <img src="/assets/icon.png" height="40px" />
-                <Heading level={2} ml={1} my={0}>
+                <Heading level={2} ml={1} mb={0}>
                   COMPOSITE UI
                 </Heading>
               </Flex>
@@ -55,21 +53,16 @@ const Layout = ({ children }) => {
           ref={trigger}
           p="0"
           onClick={() => {
+            console.log('cicked');
             setDrawerOpen(!drawerOpen);
           }}
-          style={!matches ? { display: 'none' } : { cursor: 'pointer' }}
+          display={['inherit', 'inherit', 'none']}
         >
           <img src="/assets/menu-24px.svg" height="32px" />
         </Button>
       </Navbar>
       <Flex>
-        <Drawer
-          pt="82px"
-          responsive
-          shouldHideAtWidth="890px"
-          triggerRef={trigger}
-          open={drawerOpen}
-        >
+        <Drawer pt="82px" responsive triggerRef={trigger} open={drawerOpen}>
           <Tabs vertical>
             <Link href="/docs/getting-started">
               <Tab
@@ -100,7 +93,7 @@ const Layout = ({ children }) => {
             ))}
           </Tabs>
         </Drawer>
-        <Drawer.Offset style={{ maxWidth: '100%' }}>
+        <Drawer.Offset>
           <Flex width="100%" justifyContent="center">
             <Box width="750px" pt="82px" px={4} maxWidth="100%">
               {children}
