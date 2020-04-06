@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  get,
   width,
   color,
   padding,
@@ -19,22 +18,28 @@ import {
   ZIndexProps,
   BorderRightProps,
   BorderLeftProps,
-  OpacityProps
+  OpacityProps,
+  ColorProps,
+  RightProps,
+  LeftProps,
+  FlexShrinkProps
 } from 'styled-system';
 import styled from '@emotion/styled';
 import { spaceDefaults } from '../../config/theme';
-import { transform } from '../../config/system';
+import { transform, TransformProps } from '../../config/system';
 import {
   createShouldForwardProp,
   props
 } from '@styled-system/should-forward-prop';
-import { Flex } from '../Flex';
-import { useWindowMatch } from '../../hooks/useWindowMatch';
 import { useTheme } from '../../hooks/useTheme';
 
-const shouldForwardProp = createShouldForwardProp([...props, 'open']);
+const shouldForwardProp = createShouldForwardProp([
+  ...props,
+  'open',
+  'transform'
+]);
 
-export const Wrapper = styled('div', { shouldForwardProp })`
+export const Wrapper = styled('div', { shouldForwardProp })<IWrapperProps>`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -55,6 +60,18 @@ export const Wrapper = styled('div', { shouldForwardProp })`
   ${flexShrink}
 `;
 
+interface IWrapperProps
+  extends Merge<ColorProps, React.HTMLAttributes<HTMLDivElement>>,
+    WidthProps,
+    PaddingProps,
+    ZIndexProps,
+    BorderLeftProps,
+    BorderRightProps,
+    RightProps,
+    LeftProps,
+    TransformProps,
+    FlexShrinkProps {}
+
 export interface IOverlayProps extends OpacityProps, ZIndexProps {}
 
 export const Overlay = styled('div', { shouldForwardProp })`
@@ -74,13 +91,19 @@ Overlay.defaultProps = {
   opacity: 0.1
 };
 
-export interface IDrawerOffsetProps extends LayoutProps {}
+export interface IDrawerOffsetProps extends LayoutProps, PaddingProps {}
 
 export const Offset = styled.div`
   display: flex;
-  flex-grow: 1;
+  box-sizing: border-box;
   ${layout}
+  ${padding}
 `;
+
+Offset.defaultProps = {
+  pl: [0, 0, '250px'],
+  width: '100%'
+};
 
 export interface IDrawerProps
   extends WidthProps,
@@ -93,9 +116,8 @@ export interface IDrawerProps
   open?: boolean;
   placement?: 'left' | 'right';
   responsive?: boolean;
+  responsiveBreakpointIndex?: number;
   triggerRef?: React.RefObject<HTMLElement>;
-  shouldHideAtIndex?: number;
-  shouldHideAtWidth?: string;
   overlay?: IOverlayProps;
 }
 
@@ -105,20 +127,10 @@ const placementTransforms = {
 };
 
 const Menu = React.forwardRef(
-  (props: IDrawerProps, ref: React.RefObject<HTMLDivElement>) => {
-    const handleChange = (match: boolean) => {
-      if (props.responsive && props.triggerRef) {
-        /*
-        There are two cases where we want to click the trigger to change the parent's drawer state:
-        1. If the drawer is open and we are now below responsive threshold then close the drawer
-        2. If the drawer is closed and we are now above responsive threshold
-        */
-        if ((props.open && match) || (!props.open && !match)) {
-          props.triggerRef.current.click();
-        }
-      }
-    };
-
+  (
+    { responsiveBreakpointIndex = 1, ...props }: IDrawerProps,
+    ref: React.RefObject<HTMLDivElement>
+  ) => {
     const triggerClose = () => {
       if (props.triggerRef) {
         props.triggerRef.current.click();
@@ -126,48 +138,42 @@ const Menu = React.forwardRef(
     };
 
     const theme = useTheme();
-    const matchWidth = props.shouldHideAtWidth
-      ? props.shouldHideAtWidth
-      : props.shouldHideAtIndex
-      ? get(theme, `breakpoints.${props.shouldHideAtIndex}`)
-      : get(theme, `breakpoints.1`);
-    const matches = useWindowMatch(matchWidth, handleChange);
-
-    const showIfResponsive = props.responsive && !matches;
-
-    // Determine variable props for wrapper
-    const placement = props.placement || 'left';
-    const transform =
-      props.open || showIfResponsive
-        ? undefined
-        : placementTransforms[placement];
-    const right = placement === 'right' ? 0 : undefined;
-    const left = placement === 'left' ? 0 : undefined;
-
-    // Create wrapper element
-    const wrapper = (
-      <Wrapper
-        {...props}
-        right={right}
-        left={left}
-        transform={transform}
-        flexShrink={0}
-        ref={ref}
-      />
-    );
-
-    // Only use the flex element when we want a responsize drawer
-    if (showIfResponsive) {
-      return (
-        <Flex width={props.width || '250px'} flexShrink={0}>
-          {wrapper}
-        </Flex>
+    if (
+      responsiveBreakpointIndex >= theme.breakpoints.length ||
+      responsiveBreakpointIndex < 0
+    ) {
+      throw new Error(
+        `Invalid breakpoint index provided for responsiveBreakpointIndex: ${responsiveBreakpointIndex}`
       );
     }
 
+    const placement = props.placement || 'left';
+    const right = placement === 'right' ? 0 : undefined;
+    const left = placement === 'left' ? 0 : undefined;
+    const transform = props.open
+      ? 'translateX(0)'
+      : placementTransforms[placement];
+    let transformProp: string | string[] = transform;
+
+    if (props.responsive) {
+      const responsiveTransformStyle = [transform];
+      for (let i = 1; i < responsiveBreakpointIndex + 1; i++) {
+        responsiveTransformStyle[i] = '';
+      }
+      responsiveTransformStyle[responsiveBreakpointIndex + 1] = 'none';
+      transformProp = responsiveTransformStyle;
+    }
+
+    const wrapperProps: IWrapperProps = {
+      ...props,
+      right,
+      left,
+      transform: transformProp
+    };
+
     return (
       <>
-        {wrapper}
+        <Wrapper {...wrapperProps} ref={ref} />
         {props.open && <Overlay onClick={triggerClose} {...props.overlay} />}
       </>
     );
@@ -178,7 +184,7 @@ Menu.defaultProps = {
   zIndex: 2,
   backgroundColor: '#fff',
   pt: 50 + spaceDefaults[2],
-  px: spaceDefaults[3],
+  px: 3,
   width: '250px'
 };
 

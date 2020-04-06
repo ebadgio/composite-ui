@@ -1,4 +1,4 @@
-import { system } from 'styled-system';
+import { system, ResponsiveValue } from 'styled-system';
 
 export const transform = system({
   transform: {
@@ -7,5 +7,5 @@ export const transform = system({
 });
 
 export type TransformProps = {
-  transform: string;
+  transform?: ResponsiveValue<string>;
 };

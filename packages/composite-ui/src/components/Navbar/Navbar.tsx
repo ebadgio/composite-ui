@@ -67,7 +67,11 @@ export const Navbar = React.forwardRef(
 
     const renderTitle = (): React.ReactNode => {
       if (typeof props.title === 'string') {
-        return <Heading level={2}>{props.title}</Heading>;
+        return (
+          <Heading level={2} mb={0} mt={0}>
+            {props.title}
+          </Heading>
+        );
       }
       return props.title;
     };

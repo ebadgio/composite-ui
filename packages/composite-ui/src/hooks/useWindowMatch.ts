@@ -5,13 +5,11 @@ export const useWindowMatch = (
   width: string,
   onChange?: (match: boolean) => void
 ): boolean => {
-  if (typeof window === 'undefined') {
-    return false;
-  }
   const [matches, setMatches] = useState(matchesBelow(width));
 
   useEffect(() => {
     const handleResize = () => {
+      console.log('resize');
       const match = matchesBelow(width);
       if (match != matches) {
         setMatches(match);
@@ -20,7 +18,7 @@ export const useWindowMatch = (
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, [matches]);
 
   return matches;
 };
