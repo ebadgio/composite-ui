@@ -2,6 +2,7 @@
 export { Box, IBoxProps } from './components/Box';
 export { Text, ITextProps } from './components/Text';
 export { Flex, IFlexProps } from './components/Flex';
+export { Grid, IGridProps } from './components/Grid';
 export { Button, IButtonProps } from './components/Button';
 export { Input, IInputProps } from './components/Input';
 export { Textarea, ITextareaProps } from './components/Textarea';

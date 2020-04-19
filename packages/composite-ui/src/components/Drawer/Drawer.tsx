@@ -15,7 +15,6 @@ import {
   WidthProps,
   BackgroundColorProps,
   PaddingProps,
-  ZIndexProps,
   BorderRightProps,
   BorderLeftProps,
   OpacityProps,
@@ -26,7 +25,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import { spaceDefaults } from '../../config/theme';
-import { transform, TransformProps } from '../../config/system';
+import { transform, TransformProps, ZIndexProps } from '../../config/system';
 import {
   createShouldForwardProp,
   props
@@ -128,12 +127,7 @@ const placementTransforms = {
 
 const Menu = React.forwardRef(
   (
-    // @ts-ignore
-    {
-      responsiveBreakpointIndex = 1,
-      zIndex = 'drawer',
-      ...props
-    }: IDrawerProps,
+    { responsiveBreakpointIndex = 1, ...props }: IDrawerProps,
     ref: React.RefObject<HTMLDivElement>
   ) => {
     const triggerClose = () => {
@@ -186,6 +180,7 @@ const Menu = React.forwardRef(
 );
 
 Menu.defaultProps = {
+  zIndex: 'drawer',
   backgroundColor: '#fff',
   pt: 50 + spaceDefaults[2],
   px: 3,

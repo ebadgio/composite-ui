@@ -17,6 +17,7 @@ const componentTabs = [
   { text: 'Button', href: '/docs/button' },
   { text: 'Drawer', href: '/docs/drawer' },
   { text: 'Flex', href: '/docs/flex' },
+  { text: 'Grid', href: '/docs/grid' },
   { text: 'Heading', href: '/docs/heading' },
   { text: 'Input', href: '/docs/input' },
   { text: 'Navbar', href: '/docs/navbar' },
@@ -62,7 +63,13 @@ const Layout = ({ children }) => {
         </Button>
       </Navbar>
       <Flex>
-        <Drawer pt="82px" responsive triggerRef={trigger} open={drawerOpen}>
+        <Drawer
+          paddingTop={[3, 3, '82px']}
+          responsive
+          triggerRef={trigger}
+          open={drawerOpen}
+          zIndex={['drawer', 'drawer', 'normal']}
+        >
           <Tabs vertical>
             <Link href="/docs/getting-started">
               <Tab
