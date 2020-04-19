@@ -9,3 +9,8 @@ export const transform = system({
 export type TransformProps = {
   transform?: ResponsiveValue<string>;
 };
+
+// To allow aliases z-indices
+export type ZIndexProps = {
+  zIndex?: ResponsiveValue<string>;
+};

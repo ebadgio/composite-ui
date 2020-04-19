@@ -14,14 +14,14 @@ import {
   HeightProps,
   BoxShadowProps,
   ColorProps,
-  BorderBottomProps,
-  ZIndexProps
+  BorderBottomProps
 } from 'styled-system';
 import styled from '@emotion/styled';
 import {
   createShouldForwardProp,
   props
 } from '@styled-system/should-forward-prop';
+import { ZIndexProps } from '../../config/system';
 import { Tabs } from '../Tabs';
 import { Box } from '../Box';
 import { ITabProps } from '../Tab';
@@ -49,8 +49,7 @@ interface IWrapperProps
     BorderBottomProps,
     BoxShadowProps,
     HeightProps,
-    ZIndexProps,
-    PositionProps,
+    Merge<PositionProps, ZIndexProps>,
     PaddingProps,
     FlexboxProps {}
 
@@ -88,7 +87,7 @@ export const Navbar = React.forwardRef(
 Navbar.defaultProps = {
   bg: '#fff',
   height: '50px',
-  zIndex: 3,
+  zIndex: 'navbar',
   position: 'fixed',
   justifyContent: 'space-between',
   alignItems: 'center',

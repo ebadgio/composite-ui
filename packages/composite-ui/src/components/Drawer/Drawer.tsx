@@ -15,7 +15,6 @@ import {
   WidthProps,
   BackgroundColorProps,
   PaddingProps,
-  ZIndexProps,
   BorderRightProps,
   BorderLeftProps,
   OpacityProps,
@@ -26,7 +25,7 @@ import {
 } from 'styled-system';
 import styled from '@emotion/styled';
 import { spaceDefaults } from '../../config/theme';
-import { transform, TransformProps } from '../../config/system';
+import { transform, TransformProps, ZIndexProps } from '../../config/system';
 import {
   createShouldForwardProp,
   props
@@ -87,7 +86,7 @@ export const Overlay = styled('div', { shouldForwardProp })`
 `;
 
 Overlay.defaultProps = {
-  zIndex: 1,
+  zIndex: 'overlay',
   opacity: 0.1
 };
 
@@ -181,7 +180,7 @@ const Menu = React.forwardRef(
 );
 
 Menu.defaultProps = {
-  zIndex: 2,
+  zIndex: 'drawer',
   backgroundColor: '#fff',
   pt: 50 + spaceDefaults[2],
   px: 3,

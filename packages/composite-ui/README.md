@@ -10,6 +10,8 @@ A modular, intuitive, and design system first React component library. Built on 
 
 [![CircleCI](https://circleci.com/gh/ebadgio/composite-ui.svg?style=svg)](https://circleci.com/gh/ebadgio/workflows/composite-ui)
 
+Docs: [https://composite-ui.com/docs/getting-started](https://composite-ui.com/docs/getting-started)
+
 ## Installation
 
 ```sh

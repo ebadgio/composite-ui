@@ -3,9 +3,11 @@ import * as CompositeUI from 'composite-ui';
 import { mdx } from '@mdx-js/react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import prismTheme from 'prism-react-renderer/themes/nightOwlLight';
+import { Grid } from 'composite-ui';
 
 const scope = {
   ...CompositeUI,
+  Grid: Grid,
   mdx
 };
 

@@ -10,7 +10,7 @@ export interface ITheme {
   shadows: Array<string>;
   breakpoints: Array<string>;
   radii: Array<number | string>;
-  zIndices: Array<number>;
+  zIndices: { [key: string]: number };
   buttons: {
     [key: string]: any;
   };
@@ -45,13 +45,14 @@ export const shadowDefaults = [
 
 export const radii = [0, 6, 28, '50%'];
 
-export const zIndices = [
-  0,
-  1, // Overlays
-  2, // Drawer
-  3, // Navbar
-  1000 // Modal
-];
+export const zIndices: { [key: string]: number } = {
+  hidden: -1,
+  normal: 0,
+  navbar: 1,
+  overlay: 2,
+  drawer: 3,
+  modal: 1000
+};
 
 export const breakpoints = [
   '420px', // mobile phones
