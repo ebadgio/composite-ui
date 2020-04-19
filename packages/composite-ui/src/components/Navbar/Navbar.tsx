@@ -88,7 +88,8 @@ export const Navbar = React.forwardRef(
 Navbar.defaultProps = {
   bg: '#fff',
   height: '50px',
-  zIndex: 3,
+  // @ts-ignore
+  zIndex: 'navbar',
   position: 'fixed',
   justifyContent: 'space-between',
   alignItems: 'center',

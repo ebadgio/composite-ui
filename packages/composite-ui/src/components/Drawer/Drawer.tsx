@@ -87,7 +87,7 @@ export const Overlay = styled('div', { shouldForwardProp })`
 `;
 
 Overlay.defaultProps = {
-  zIndex: 1,
+  zIndex: 'overlay',
   opacity: 0.1
 };
 
@@ -128,7 +128,12 @@ const placementTransforms = {
 
 const Menu = React.forwardRef(
   (
-    { responsiveBreakpointIndex = 1, ...props }: IDrawerProps,
+    // @ts-ignore
+    {
+      responsiveBreakpointIndex = 1,
+      zIndex = 'drawer',
+      ...props
+    }: IDrawerProps,
     ref: React.RefObject<HTMLDivElement>
   ) => {
     const triggerClose = () => {
@@ -181,7 +186,6 @@ const Menu = React.forwardRef(
 );
 
 Menu.defaultProps = {
-  zIndex: 2,
   backgroundColor: '#fff',
   pt: 50 + spaceDefaults[2],
   px: 3,
