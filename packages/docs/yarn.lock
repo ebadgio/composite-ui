@@ -1968,9 +1968,9 @@ compose-function@3.0.3:
   dependencies:
     arity-n "^1.0.4"
 
-composite-ui@*:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/composite-ui/-/composite-ui-1.2.6.tgz#a257dd0174da29bf302cded2d3c6495aa9067685"
+composite-ui@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/composite-ui/-/composite-ui-1.2.9.tgz#1071bf8b754fb8a104834d72d456ee7aa92bd016"
   dependencies:
     "@styled-system/should-forward-prop" "^5.1.4"
     "@types/styled-system" "^5.1.9"
@@ -4256,8 +4256,8 @@ path-is-inside@^1.0.1:
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
 
 path-to-regexp@6.1.0:
   version "6.1.0"
